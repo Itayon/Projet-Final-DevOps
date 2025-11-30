@@ -2,7 +2,7 @@
 
 Infrastructure as Code pour déployer une infrastructure web évolutive sur OVH Cloud avec Terraform, Packer et Ansible.
 
-##  Table des matières
+## Table des matières
 
 - [Vue d'ensemble](#-vue-densemble)
 - [Architecture](#-architecture)
@@ -14,7 +14,7 @@ Infrastructure as Code pour déployer une infrastructure web évolutive sur OVH 
 - [Gestion](#-gestion-de-linfrastructure)
 - [Dépannage](#-dépannage)
 
-## � Vue d'ensemble
+## Vue d'ensemble
 
 Déployez une infrastructure web complète comprenant :
 - **Serveurs Web Nginx** : Serveurs frontaux avec proxy vers les backends
@@ -88,7 +88,7 @@ database_flavor  = "b2-7"
 network_name = "Ext-Net"
 ```
 
-##� Images Packer
+## Images Packer
 
 ### Construire les images
 
