@@ -1,0 +1,178 @@
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const { Pool } = require('pg');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(cors());
+app.use(express.json());
+
+// Configuration de la base de données
+const pool = new Pool({
+  host: process.env.DATABASE_HOST || 'localhost',
+  port: process.env.DATABASE_PORT || 5432,
+  database: process.env.DATABASE_NAME || 'appdb',
+  user: process.env.DATABASE_USER || 'appuser',
+  password: process.env.DATABASE_PASSWORD || 'changeme123',
+});
+
+const backendInfo = {
+  version: '{{ backend_version }}',
+  hostname: require('os').hostname(),
+  pid: process.pid,
+  database_host: process.env.DATABASE_HOST || 'localhost'
+};
+
+// Test de connexion à la database
+pool.query('SELECT NOW() as time, current_database() as db', (err, res) => {
+  if (err) {
+    console.error('❌ Erreur de connexion à la database:', err);
+  } else {
+    console.log('✅ Connecté à la database:', res.rows[0]);
+  }
+});
+
+app.get('/health', async (req, res) => {
+  try {
+    await pool.query('SELECT 1');
+    res.json({
+      status: 'healthy',
+      database: 'connected',
+      timestamp: new Date().toISOString(),
+      ...backendInfo
+    });
+  } catch (error) {
+    res.status(503).json({
+      status: 'unhealthy',
+      database: 'disconnected',
+      error: error.message,
+      timestamp: new Date().toISOString(),
+      ...backendInfo
+    });
+  }
+});
+
+app.get('/api/info', (req, res) => {
+  res.json({
+    message: 'Backend API Server',
+    ...backendInfo,
+    uptime: process.uptime(),
+    database: {
+      host: process.env.DATABASE_HOST || 'localhost',
+      database: process.env.DATABASE_NAME || 'appdb'
+    },
+    timestamp: new Date().toISOString()
+  });
+});
+
+// Récupérer toutes les données
+app.get('/api/data', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT id, value, created_at FROM data ORDER BY id DESC LIMIT 100');
+    res.json({
+      hostname: backendInfo.hostname,
+      count: result.rows.length,
+      data: result.rows,
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('Erreur lors de la récupération des données:', error);
+    res.status(500).json({
+      error: error.message,
+      hostname: backendInfo.hostname
+    });
+  }
+});
+
+// Ajouter une nouvelle donnée
+app.post('/api/data', async (req, res) => {
+  const { value } = req.body;
+  
+  if (!value) {
+    return res.status(400).json({ error: 'Value is required' });
+  }
+
+  try {
+    const result = await pool.query(
+      'INSERT INTO data (value) VALUES ($1) RETURNING id, value, created_at',
+      [value]
+    );
+    console.log('✅ Donnée ajoutée:', result.rows[0]);
+    res.status(201).json({
+      message: 'Data added successfully',
+      data: result.rows[0],
+      hostname: backendInfo.hostname
+    });
+  } catch (error) {
+    console.error('❌ Erreur lors de l\'ajout:', error);
+    res.status(500).json({
+      error: error.message,
+      hostname: backendInfo.hostname
+    });
+  }
+});
+
+// Supprimer une donnée
+app.delete('/api/data/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const result = await pool.query('DELETE FROM data WHERE id = $1 RETURNING id, value', [id]);
+    
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Data not found' });
+    }
+
+    console.log('✅ Donnée supprimée:', result.rows[0]);
+    res.json({
+      message: 'Data deleted successfully',
+      data: result.rows[0],
+      hostname: backendInfo.hostname
+    });
+  } catch (error) {
+    console.error('❌ Erreur lors de la suppression:', error);
+    res.status(500).json({
+      error: error.message,
+      hostname: backendInfo.hostname
+    });
+  }
+});
+
+app.get('/api/status', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT COUNT(*) as count FROM data');
+    
+    res.json({
+      status: 'running',
+      version: '{{ backend_version }}',
+      hostname: backendInfo.hostname,
+      uptime: process.uptime(),
+      memory: process.memoryUsage(),
+      database: {
+        connected: true,
+        host: process.env.DATABASE_HOST || 'localhost',
+        records_count: parseInt(result.rows[0].count)
+      },
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    res.json({
+      status: 'running',
+      version: '{{ backend_version }}',
+      hostname: backendInfo.hostname,
+      uptime: process.uptime(),
+      memory: process.memoryUsage(),
+      database: {
+        connected: false,
+        error: error.message
+      },
+      timestamp: new Date().toISOString()
+    });
+  }
+});
+
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Backend API listening on port ${PORT}`);
+  console.log(`📊 Database: ${process.env.DATABASE_HOST}:${process.env.DATABASE_PORT}/${process.env.DATABASE_NAME}`);
+});

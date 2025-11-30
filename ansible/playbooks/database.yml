@@ -1,0 +1,504 @@
+---
+- name: Configuration du serveur PostgreSQL
+  hosts: all
+  become: yes
+  vars:
+    database_version: "{{ database_version | default('1.0') }}"
+    postgres_version: "15"
+    db_name: "appdb"
+    db_user: "appuser"
+    db_password: "changeme123"
+  
+  tasks:
+    - name: Nettoyer les fichiers cloud-init
+      file:
+        path: /var/lib/cloud/
+        state: absent
+
+    - name: Nettoyer cloud-init
+      command: cloud-init clean
+      ignore_errors: yes
+
+    - name: Installer les dépendances
+      apt:
+        name:
+          - wget
+          - gnupg
+          - lsb-release
+        state: present
+        update_cache: yes
+
+    - name: Ajouter la clé GPG PostgreSQL
+      shell: |
+        wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /usr/share/keyrings/postgresql-keyring.gpg
+      args:
+        creates: /usr/share/keyrings/postgresql-keyring.gpg
+
+    - name: Ajouter le repository PostgreSQL
+      shell: |
+        echo "deb [signed-by=/usr/share/keyrings/postgresql-keyring.gpg] http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list
+
+    - name: Installer PostgreSQL
+      apt:
+        name:
+          - "postgresql-{{ postgres_version }}"
+          - "postgresql-contrib-{{ postgres_version }}"
+          - python3-psycopg2
+        state: present
+        update_cache: yes
+
+    - name: Créer le répertoire pour les scripts
+      file:
+        path: /usr/local/bin/pg-scripts
+        state: directory
+        owner: postgres
+        group: postgres
+        mode: '0755'
+
+    - name: Créer le script de configuration master
+      copy:
+        content: |
+          #!/bin/bash
+          set -e
+          
+          SLAVE_IP="$1"
+          
+          if [ -z "$SLAVE_IP" ]; then
+              echo "Usage: $0 <slave_ip>"
+              exit 1
+          fi
+          
+          echo "Configuration du serveur Master PostgreSQL..."
+          
+          # Configuration PostgreSQL pour la réplication
+          cat >> /etc/postgresql/{{ postgres_version }}/main/postgresql.conf << EOF
+          
+          # Configuration réplication
+          wal_level = replica
+          max_wal_senders = 3
+          wal_keep_size = 64
+          listen_addresses = '*'
+          EOF
+          
+          # Créer l'utilisateur de réplication
+          sudo -u postgres psql -c "CREATE USER replicator REPLICATION LOGIN ENCRYPTED PASSWORD 'replicator123';" || true
+          
+          # Autoriser la connexion du slave
+          echo "host    replication    replicator    ${SLAVE_IP}/32    md5" >> /etc/postgresql/{{ postgres_version }}/main/pg_hba.conf
+          echo "host    all            all           ${SLAVE_IP}/32    md5" >> /etc/postgresql/{{ postgres_version }}/main/pg_hba.conf
+          
+          # Créer la base de données et l'utilisateur
+          sudo -u postgres psql << EOSQL
+          CREATE DATABASE {{ db_name }};
+          CREATE USER {{ db_user }} WITH ENCRYPTED PASSWORD '{{ db_password }}';
+          GRANT ALL PRIVILEGES ON DATABASE {{ db_name }} TO {{ db_user }};
+          \c {{ db_name }}
+          CREATE TABLE IF NOT EXISTS data (
+              id SERIAL PRIMARY KEY,
+              value VARCHAR(255) NOT NULL,
+              created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+          );
+          GRANT ALL PRIVILEGES ON TABLE data TO {{ db_user }};
+          GRANT USAGE, SELECT ON SEQUENCE data_id_seq TO {{ db_user }};
+          EOSQL
+          
+          # Redémarrer PostgreSQL
+          systemctl restart postgresql
+          
+          echo "Master configuré avec succès!"
+          echo "Base de données: {{ db_name }}"
+          echo "Utilisateur: {{ db_user }}"
+        dest: /usr/local/bin/pg-scripts/setup-master.sh
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Créer le script de configuration slave
+      copy:
+        content: |
+          #!/bin/bash
+          set -e
+          
+          MASTER_IP="$1"
+          
+          if [ -z "$MASTER_IP" ]; then
+              echo "Usage: $0 <master_ip>"
+              exit 1
+          fi
+          
+          echo "Configuration du serveur Slave PostgreSQL..."
+          
+          # Créer un nom de slot valide (uniquement lettres, chiffres et underscore)
+          SLOT_NAME="replica_$(hostname | tr '-' '_' | tr '[:upper:]' '[:lower:]')"
+          
+          # Créer le fichier .pgpass PERMANENT pour l'authentification
+          echo "${MASTER_IP}:5432:replication:replicator:replicator123" > /var/lib/postgresql/.pgpass
+          chown postgres:postgres /var/lib/postgresql/.pgpass
+          chmod 600 /var/lib/postgresql/.pgpass
+          
+          # Arrêter PostgreSQL (le vrai service)
+          systemctl stop postgresql@15-main.service || true
+          systemctl stop postgresql.service || true
+          
+          # Tuer les processus PostgreSQL qui pourraient rester
+          pkill -9 postgres || true
+          sleep 2
+          
+          # Nettoyer le PID file
+          rm -f /run/postgresql/15-main.pid
+          
+          # Sauvegarder les données existantes
+          if [ -d "/var/lib/postgresql/15/main" ]; then
+              rm -rf "/var/lib/postgresql/15/main.bak"
+              mv "/var/lib/postgresql/15/main" "/var/lib/postgresql/15/main.bak"
+          fi
+          
+          # Créer le répertoire avec les bonnes permissions dès le départ
+          mkdir -p "/var/lib/postgresql/15/main"
+          chown -R postgres:postgres "/var/lib/postgresql/15/main"
+          chmod 700 "/var/lib/postgresql/15/main"
+          
+          # Copier les données du master avec pg_basebackup
+          export PGPASSFILE=/var/lib/postgresql/.pgpass
+          sudo -u postgres pg_basebackup -h ${MASTER_IP} -D /var/lib/postgresql/15/main -U replicator -P -v -R -X stream -C -S ${SLOT_NAME}
+          
+          # NE PAS supprimer le fichier .pgpass - il est nécessaire pour la réplication continue
+          # Le fichier restera pour que le slave puisse se reconnecter au master
+          
+          # Vérifier et corriger les permissions après pg_basebackup
+          chown -R postgres:postgres "/var/lib/postgresql/15"
+          chmod 700 "/var/lib/postgresql/15/main"
+          find /var/lib/postgresql/15/main -type d -exec chmod 700 {} \;
+          find /var/lib/postgresql/15/main -type f -exec chmod 600 {} \;
+          
+          # S'assurer que .pgpass est toujours là
+          chown postgres:postgres /var/lib/postgresql/.pgpass
+          chmod 600 /var/lib/postgresql/.pgpass
+          
+          # Configuration PostgreSQL
+          cat >> /etc/postgresql/15/main/postgresql.conf << EOF
+          
+          # Configuration slave
+          hot_standby = on
+          listen_addresses = '*'
+          EOF
+          
+          # S'assurer que les fichiers de config ont les bonnes permissions
+          chown postgres:postgres /etc/postgresql/15/main/postgresql.conf
+          chmod 644 /etc/postgresql/15/main/postgresql.conf
+          
+          # Démarrer PostgreSQL (le vrai service)
+          systemctl start postgresql@15-main.service
+          sleep 5
+          
+          # Vérifier que PostgreSQL est bien démarré
+          if systemctl is-active --quiet postgresql@15-main.service; then
+              echo "✅ Service PostgreSQL démarré"
+          else
+              echo "❌ Échec du démarrage de PostgreSQL"
+              systemctl status postgresql@15-main.service
+              exit 1
+          fi
+          
+          # Vérifier que PostgreSQL écoute
+          if ss -tunlp | grep -q 5432; then
+              echo "✅ PostgreSQL écoute sur le port 5432"
+          else
+              echo "❌ PostgreSQL n'écoute PAS sur le port 5432"
+              exit 1
+          fi
+          
+          # Vérifier la réplication
+          sleep 3
+          IS_RECOVERY=$(sudo -u postgres psql -t -c "SELECT pg_is_in_recovery();" | tr -d ' ')
+          if [ "$IS_RECOVERY" = "t" ]; then
+              echo "✅ Le slave est en mode recovery"
+          else
+              echo "❌ Le slave N'EST PAS en mode recovery"
+          fi
+          
+          # Démarrer le service wrapper
+          systemctl start postgresql.service || true
+          
+          echo "Slave configuré avec succès avec le slot: ${SLOT_NAME}"
+          echo "Fichier .pgpass maintenu pour la réplication continue"
+        dest: /usr/local/bin/pg-scripts/setup-slave.sh
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Créer le script de configuration multi-master node
+      copy:
+        content: |
+          #!/bin/bash
+          set -e
+          
+          NODE_ID="$1"
+          TOTAL_NODES="$2"
+          
+          if [ -z "$NODE_ID" ] || [ -z "$TOTAL_NODES" ]; then
+              echo "Usage: $0 <node_id> <total_nodes>"
+              exit 1
+          fi
+          
+          echo "Configuration PostgreSQL Multi-Master Node ${NODE_ID}/${TOTAL_NODES}..."
+          
+          # Changer temporairement de répertoire pour éviter les erreurs de permission
+          cd /tmp
+          
+          # Configuration PostgreSQL pour la réplication logique bidirectionnelle
+          cat >> /etc/postgresql/{{ postgres_version }}/main/postgresql.conf << EOF
+          
+          # Configuration multi-master (réplication logique)
+          wal_level = logical
+          max_replication_slots = 10
+          max_wal_senders = 10
+          max_logical_replication_workers = 10
+          max_worker_processes = 20
+          max_sync_workers_per_subscription = 2
+          listen_addresses = '*'
+          EOF
+          
+          # Redémarrer PostgreSQL
+          systemctl restart postgresql
+          sleep 5
+          
+          # Créer la base de données et l'utilisateur avec droits de réplication
+          sudo -u postgres psql << EOSQL
+          CREATE DATABASE {{ db_name }};
+          CREATE USER {{ db_user }} WITH ENCRYPTED PASSWORD '{{ db_password }}';
+          ALTER USER {{ db_user }} WITH REPLICATION;
+          GRANT ALL PRIVILEGES ON DATABASE {{ db_name }} TO {{ db_user }};
+          
+          \c {{ db_name }}
+          
+          -- Créer la table avec gestion des conflits
+          CREATE TABLE IF NOT EXISTS data (
+              id BIGINT PRIMARY KEY,
+              value VARCHAR(255) NOT NULL,
+              created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+              updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+              node_id INT DEFAULT ${NODE_ID}
+          );
+          
+          -- Créer une séquence avec offset pour éviter les conflits d'ID
+          -- Node 1: 1, 1+TOTAL_NODES, 1+2*TOTAL_NODES... (ex: 1, 3, 5, 7...)
+          -- Node 2: 2, 2+TOTAL_NODES, 2+2*TOTAL_NODES... (ex: 2, 4, 6, 8...)
+          CREATE SEQUENCE IF NOT EXISTS data_id_seq
+              START WITH ${NODE_ID}
+              INCREMENT BY ${TOTAL_NODES}
+              OWNED BY data.id;
+          
+          ALTER TABLE data ALTER COLUMN id SET DEFAULT nextval('data_id_seq');
+          
+          -- Fonction de mise à jour automatique de updated_at
+          CREATE OR REPLACE FUNCTION update_updated_at_column()
+          RETURNS TRIGGER AS \$\$
+          BEGIN
+              NEW.updated_at = CURRENT_TIMESTAMP;
+              RETURN NEW;
+          END;
+          \$\$ language 'plpgsql';
+          
+          CREATE TRIGGER update_data_updated_at BEFORE UPDATE ON data
+              FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+          
+          GRANT ALL PRIVILEGES ON TABLE data TO {{ db_user }};
+          GRANT USAGE, SELECT ON SEQUENCE data_id_seq TO {{ db_user }};
+          
+          -- Créer une publication pour la réplication sortante
+          CREATE PUBLICATION pub_data FOR TABLE data;
+          EOSQL
+          
+          echo "✅ Node ${NODE_ID} configuré avec succès!"
+          echo "Prêt pour la réplication bidirectionnelle"
+        dest: /usr/local/bin/pg-scripts/setup-multimaster-node.sh
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Créer le script de configuration des souscriptions
+      copy:
+        content: |
+          #!/bin/bash
+          set -e
+          
+          # Prend en paramètre la liste des IPs des autres nodes
+          OTHER_NODES_IPS="$@"
+          
+          if [ -z "$OTHER_NODES_IPS" ]; then
+              echo "Usage: $0 <other_node_ip1> [other_node_ip2] ..."
+              exit 1
+          fi
+          
+          echo "Configuration des souscriptions vers les autres nodes..."
+          
+          # Changer temporairement de répertoire pour éviter les erreurs de permission
+          cd /tmp
+          
+          # Créer le fichier .pgpass pour l'authentification
+          > /var/lib/postgresql/.pgpass
+          for IP in $OTHER_NODES_IPS; do
+              echo "${IP}:5432:{{ db_name }}:{{ db_user }}:{{ db_password }}" >> /var/lib/postgresql/.pgpass
+          done
+          chown postgres:postgres /var/lib/postgresql/.pgpass
+          chmod 600 /var/lib/postgresql/.pgpass
+          
+          # Attendre que tous les autres nodes soient disponibles
+          echo "Attente de la disponibilité des autres nodes..."
+          for IP in $OTHER_NODES_IPS; do
+              echo "Vérification du node ${IP}..."
+              for i in {1..30}; do
+                  if PGPASSWORD='{{ db_password }}' psql -h ${IP} -U {{ db_user }} -d {{ db_name }} -c "SELECT 1" &>/dev/null; then
+                      echo "✅ Node ${IP} accessible"
+                      break
+                  fi
+                  if [ $i -eq 30 ]; then
+                      echo "❌ Impossible de joindre le node ${IP} après 30 tentatives"
+                      exit 1
+                  fi
+                  echo "Tentative ${i}/30..."
+                  sleep 10
+              done
+          done
+          
+          # Créer les souscriptions vers tous les autres nodes
+          SUB_INDEX=1
+          for IP in $OTHER_NODES_IPS; do
+              echo "Création de la souscription vers ${IP}..."
+              
+              # Créer un nom de souscription unique
+              SUB_NAME="sub_from_node_${SUB_INDEX}"
+              
+              sudo -u postgres psql -d {{ db_name }} << EOSQL
+          -- Supprimer la souscription si elle existe déjà
+          DROP SUBSCRIPTION IF EXISTS ${SUB_NAME};
+          
+          -- Créer la souscription
+          CREATE SUBSCRIPTION ${SUB_NAME}
+              CONNECTION 'host=${IP} port=5432 dbname={{ db_name }} user={{ db_user }} password={{ db_password }}'
+              PUBLICATION pub_data
+              WITH (
+                  copy_data = false,
+                  create_slot = true,
+                  enabled = true,
+                  slot_name = ${SUB_NAME}_slot
+              );
+          EOSQL
+              
+              if [ $? -eq 0 ]; then
+                  echo "✅ Souscription ${SUB_NAME} créée avec succès"
+              else
+                  echo "❌ Erreur lors de la création de ${SUB_NAME}"
+              fi
+              
+              SUB_INDEX=$((SUB_INDEX + 1))
+          done
+          
+          # Vérifier le statut des réplications
+          echo ""
+          echo "=== Statut des souscriptions ==="
+          sudo -u postgres psql -d {{ db_name }} -c "SELECT subname, subenabled, subslotname FROM pg_subscription;"
+          
+          echo ""
+          echo "✅ Configuration multi-master terminée!"
+        dest: /usr/local/bin/pg-scripts/setup-subscriptions.sh
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Configurer PostgreSQL pour écouter sur toutes les interfaces
+      lineinfile:
+        path: "/etc/postgresql/{{ postgres_version }}/main/postgresql.conf"
+        regexp: "^#?listen_addresses"
+        line: "listen_addresses = '*'"
+        backup: yes
+
+    - name: Configurer pg_hba.conf pour autoriser les connexions
+      blockinfile:
+        path: "/etc/postgresql/{{ postgres_version }}/main/pg_hba.conf"
+        block: |
+          # Allow connections from any host
+          host    all             all             0.0.0.0/0               md5
+          host    all             all             ::/0                    md5
+        backup: yes
+
+    - name: Redémarrer PostgreSQL
+      systemd:
+        name: postgresql
+        state: restarted
+
+    - name: Attendre que PostgreSQL soit prêt
+      wait_for:
+        port: 5432
+        delay: 5
+        timeout: 30
+
+    - name: Créer un script de setup de la base de données
+      copy:
+        dest: /tmp/setup-db.sh
+        mode: '0755'
+        content: |
+          #!/bin/bash
+          set -e
+          
+          sudo -u postgres psql <<'EOF'
+          -- Créer la base de données si elle n'existe pas
+          SELECT 'CREATE DATABASE {{ db_name }}'
+          WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = '{{ db_name }}')
+          \gexec
+          
+          -- Créer l'utilisateur si il n'existe pas
+          DO
+          $$
+          BEGIN
+            IF NOT EXISTS (SELECT FROM pg_user WHERE usename = '{{ db_user }}') THEN
+              CREATE USER {{ db_user }} WITH ENCRYPTED PASSWORD '{{ db_password }}';
+            END IF;
+          END
+          $$;
+          
+          -- Accorder les privilèges
+          GRANT ALL PRIVILEGES ON DATABASE {{ db_name }} TO {{ db_user }};
+          EOF
+
+    - name: Exécuter le script de setup
+      command: /tmp/setup-db.sh
+
+    - name: Créer un script de setup de la table
+      copy:
+        dest: /tmp/setup-table.sh
+        mode: '0755'
+        content: |
+          #!/bin/bash
+          set -e
+          
+          sudo -u postgres psql -d {{ db_name }} <<'EOF'
+          -- Créer la table si elle n'existe pas
+          CREATE TABLE IF NOT EXISTS data (
+              id SERIAL PRIMARY KEY,
+              value VARCHAR(255) NOT NULL,
+              created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+          );
+          
+          -- Accorder les privilèges
+          GRANT ALL PRIVILEGES ON TABLE data TO {{ db_user }};
+          GRANT USAGE, SELECT ON SEQUENCE data_id_seq TO {{ db_user }};
+          EOF
+
+    - name: Exécuter le script de setup de la table
+      command: /tmp/setup-table.sh
+
+    - name: Nettoyer les scripts temporaires
+      file:
+        path: "{{ item }}"
+        state: absent
+      loop:
+        - /tmp/setup-db.sh
+        - /tmp/setup-table.sh
+
+    - name: S'assurer que PostgreSQL est activé
+      systemd:
+        name: postgresql
+        enabled: yes
+        state: started

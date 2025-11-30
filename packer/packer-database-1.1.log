@@ -1,0 +1,1123 @@
+2025/11/28 23:40:32 [INFO] Packer version: 1.14.3 [go1.24.0 linux amd64]
+2025/11/28 23:40:32 [INFO] PACKER_CONFIG env var not set; checking the default config file path
+2025/11/28 23:40:32 [INFO] PACKER_CONFIG env var set; attempting to open config file: /home/skinoz/.packerconfig
+2025/11/28 23:40:32 [WARN] Config file doesn't exist: /home/skinoz/.packerconfig
+2025/11/28 23:40:32 [INFO] Setting cache directory: /home/skinoz/.cache/packer
+2025/11/28 23:40:32 [TRACE] listing potential installations for "github.com/hashicorp/ansible" that match ">= 1.1.0". plugingetter.ListInstallationsOptions{PluginDirectory:"/home/skinoz/.config/packer/plugins", BinaryInstallationOptions:plugingetter.BinaryInstallationOptions{APIVersionMajor:"5", APIVersionMinor:"0", OS:"linux", ARCH:"amd64", Ext:"", Checksummers:[]plugingetter.Checksummer{plugingetter.Checksummer{Type:"sha256", Hash:(*sha256.Digest)(0xc0004cc180)}}, ReleasesOnly:false}}
+2025/11/28 23:40:33 [TRACE] Found the following "github.com/hashicorp/ansible" installations: [{/home/skinoz/.config/packer/plugins/github.com/hashicorp/ansible/packer-plugin-ansible_v1.1.4_x5.0_linux_amd64 v1.1.4 x5.0}]
+2025/11/28 23:40:33 found external [-packer-default-plugin-name- local] provisioner from ansible plugin
+2025/11/28 23:40:33 [TRACE] listing potential installations for "github.com/hashicorp/qemu" that match ">= 1.0.0". plugingetter.ListInstallationsOptions{PluginDirectory:"/home/skinoz/.config/packer/plugins", BinaryInstallationOptions:plugingetter.BinaryInstallationOptions{APIVersionMajor:"5", APIVersionMinor:"0", OS:"linux", ARCH:"amd64", Ext:"", Checksummers:[]plugingetter.Checksummer{plugingetter.Checksummer{Type:"sha256", Hash:(*sha256.Digest)(0xc0004cc180)}}, ReleasesOnly:false}}
+2025/11/28 23:40:33 [TRACE] Found the following "github.com/hashicorp/qemu" installations: [{/home/skinoz/.config/packer/plugins/github.com/hashicorp/qemu/packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 v1.1.4 x5.0}]
+2025/11/28 23:40:33 [INFO] found external [-packer-default-plugin-name-] builders from qemu plugin
+2025/11/28 23:40:33 [TRACE] listing potential installations for <nil> that match "". plugingetter.ListInstallationsOptions{PluginDirectory:"/home/skinoz/.config/packer/plugins", BinaryInstallationOptions:plugingetter.BinaryInstallationOptions{APIVersionMajor:"5", APIVersionMinor:"0", OS:"linux", ARCH:"amd64", Ext:"", Checksummers:[]plugingetter.Checksummer{plugingetter.Checksummer{Type:"sha256", Hash:(*sha256.Digest)(0xc000664100)}}, ReleasesOnly:false}}
+2025/11/28 23:40:33 found external [-packer-default-plugin-name- local] provisioner from ansible plugin
+2025/11/28 23:40:33 [INFO] found external [-packer-default-plugin-name-] builders from qemu plugin
+2025/11/28 23:40:33 [TRACE] validateValue: not active for version, so skipping
+2025/11/28 23:40:33 [TRACE] validateValue: not active for output_directory, so skipping
+2025/11/28 23:40:33 [TRACE] validateValue: not active for ssh_public_key_file, so skipping
+2025/11/28 23:40:33 [TRACE] Using protobuf for communication with plugins
+2025/11/28 23:40:33 [INFO] Starting external plugin /home/skinoz/.config/packer/plugins/github.com/hashicorp/qemu/packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 start builder --protobuf -packer-default-plugin-name-
+2025/11/28 23:40:33 Starting plugin: /home/skinoz/.config/packer/plugins/github.com/hashicorp/qemu/packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 []string{"/home/skinoz/.config/packer/plugins/github.com/hashicorp/qemu/packer-plugin-qemu_v1.1.4_x5.0_linux_amd64", "start", "builder", "--protobuf", "-packer-default-plugin-name-"}
+2025/11/28 23:40:33 Waiting for RPC address for: /home/skinoz/.config/packer/plugins/github.com/hashicorp/qemu/packer-plugin-qemu_v1.1.4_x5.0_linux_amd64
+2025/11/28 23:40:33 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:33 Plugin address: unix /tmp/packer-plugin2388179049
+2025/11/28 23:40:33 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:33 Waiting for connection...
+2025/11/28 23:40:33 Received unix RPC address for /home/skinoz/.config/packer/plugins/github.com/hashicorp/qemu/packer-plugin-qemu_v1.1.4_x5.0_linux_amd64: addr is /tmp/packer-plugin2388179049
+2025/11/28 23:40:33 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:33 Serving a plugin connection...
+2025/11/28 23:40:33 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:33 [TRACE] starting builder -packer-default-plugin-name-
+2025/11/28 23:40:33 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:33 [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:40:33 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:40:33 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:33 use specified accelerator: kvm
+2025/11/28 23:40:33 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:33 [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:40:33 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:40:33 [INFO] Starting external plugin /usr/bin/packer execute --protobuf packer-provisioner-file
+2025/11/28 23:40:33 Starting plugin: /usr/bin/packer []string{"/usr/bin/packer", "execute", "--protobuf", "packer-provisioner-file"}
+2025/11/28 23:40:33 Waiting for RPC address for: /usr/bin/packer
+2025/11/28 23:40:33 packer-provisioner-file plugin: [INFO] Packer version: 1.14.3 [go1.24.0 linux amd64]
+2025/11/28 23:40:33 packer-provisioner-file plugin: [INFO] PACKER_CONFIG env var not set; checking the default config file path
+2025/11/28 23:40:33 packer-provisioner-file plugin: [INFO] PACKER_CONFIG env var set; attempting to open config file: /home/skinoz/.packerconfig
+2025/11/28 23:40:33 packer-provisioner-file plugin: [WARN] Config file doesn't exist: /home/skinoz/.packerconfig
+2025/11/28 23:40:33 packer-provisioner-file plugin: [INFO] Setting cache directory: /home/skinoz/.cache/packer
+2025/11/28 23:40:33 packer-provisioner-file plugin: Plugin address: unix /tmp/packer-plugin3952557956
+2025/11/28 23:40:33 Received unix RPC address for /usr/bin/packer: addr is /tmp/packer-plugin3952557956
+2025/11/28 23:40:33 packer-provisioner-file plugin: Waiting for connection...
+2025/11/28 23:40:33 packer-provisioner-file plugin: Serving a plugin connection...
+2025/11/28 23:40:33 packer-provisioner-file plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:40:33 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:40:33 packer-provisioner-file plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:40:33 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:40:33 [INFO] Starting external plugin /usr/bin/packer execute --protobuf packer-provisioner-shell
+2025/11/28 23:40:33 Starting plugin: /usr/bin/packer []string{"/usr/bin/packer", "execute", "--protobuf", "packer-provisioner-shell"}
+2025/11/28 23:40:33 Waiting for RPC address for: /usr/bin/packer
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [INFO] Packer version: 1.14.3 [go1.24.0 linux amd64]
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [INFO] PACKER_CONFIG env var not set; checking the default config file path
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [INFO] PACKER_CONFIG env var set; attempting to open config file: /home/skinoz/.packerconfig
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [WARN] Config file doesn't exist: /home/skinoz/.packerconfig
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [INFO] Setting cache directory: /home/skinoz/.cache/packer
+2025/11/28 23:40:33 packer-provisioner-shell plugin: Plugin address: unix /tmp/packer-plugin4173416857
+2025/11/28 23:40:33 packer-provisioner-shell plugin: Waiting for connection...
+2025/11/28 23:40:33 Received unix RPC address for /usr/bin/packer: addr is /tmp/packer-plugin4173416857
+2025/11/28 23:40:33 packer-provisioner-shell plugin: Serving a plugin connection...
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:40:33 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:40:33 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:40:33 [INFO] Starting external plugin /usr/bin/packer execute --protobuf packer-provisioner-shell
+2025/11/28 23:40:33 Starting plugin: /usr/bin/packer []string{"/usr/bin/packer", "execute", "--protobuf", "packer-provisioner-shell"}
+2025/11/28 23:40:33 Waiting for RPC address for: /usr/bin/packer
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [INFO] Packer version: 1.14.3 [go1.24.0 linux amd64]
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [INFO] PACKER_CONFIG env var not set; checking the default config file path
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [INFO] PACKER_CONFIG env var set; attempting to open config file: /home/skinoz/.packerconfig
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [WARN] Config file doesn't exist: /home/skinoz/.packerconfig
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [INFO] Setting cache directory: /home/skinoz/.cache/packer
+2025/11/28 23:40:33 packer-provisioner-shell plugin: Plugin address: unix /tmp/packer-plugin1875226106
+2025/11/28 23:40:33 packer-provisioner-shell plugin: Waiting for connection...
+2025/11/28 23:40:33 Received unix RPC address for /usr/bin/packer: addr is /tmp/packer-plugin1875226106
+2025/11/28 23:40:33 packer-provisioner-shell plugin: Serving a plugin connection...
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:40:33 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:40:33 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:40:33 [INFO] Starting external plugin /usr/bin/packer execute --protobuf packer-provisioner-file
+2025/11/28 23:40:33 Starting plugin: /usr/bin/packer []string{"/usr/bin/packer", "execute", "--protobuf", "packer-provisioner-file"}
+2025/11/28 23:40:33 Waiting for RPC address for: /usr/bin/packer
+2025/11/28 23:40:33 packer-provisioner-file plugin: [INFO] Packer version: 1.14.3 [go1.24.0 linux amd64]
+2025/11/28 23:40:33 packer-provisioner-file plugin: [INFO] PACKER_CONFIG env var not set; checking the default config file path
+2025/11/28 23:40:33 packer-provisioner-file plugin: [INFO] PACKER_CONFIG env var set; attempting to open config file: /home/skinoz/.packerconfig
+2025/11/28 23:40:33 packer-provisioner-file plugin: [WARN] Config file doesn't exist: /home/skinoz/.packerconfig
+2025/11/28 23:40:33 packer-provisioner-file plugin: [INFO] Setting cache directory: /home/skinoz/.cache/packer
+2025/11/28 23:40:33 packer-provisioner-file plugin: Plugin address: unix /tmp/packer-plugin2757468305
+2025/11/28 23:40:33 Received unix RPC address for /usr/bin/packer: addr is /tmp/packer-plugin2757468305
+2025/11/28 23:40:33 packer-provisioner-file plugin: Waiting for connection...
+2025/11/28 23:40:33 packer-provisioner-file plugin: Serving a plugin connection...
+2025/11/28 23:40:33 packer-provisioner-file plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:40:33 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:40:33 packer-provisioner-file plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:40:33 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:40:33 [INFO] Starting external plugin /home/skinoz/.config/packer/plugins/github.com/hashicorp/ansible/packer-plugin-ansible_v1.1.4_x5.0_linux_amd64 start provisioner --protobuf local
+2025/11/28 23:40:33 Starting plugin: /home/skinoz/.config/packer/plugins/github.com/hashicorp/ansible/packer-plugin-ansible_v1.1.4_x5.0_linux_amd64 []string{"/home/skinoz/.config/packer/plugins/github.com/hashicorp/ansible/packer-plugin-ansible_v1.1.4_x5.0_linux_amd64", "start", "provisioner", "--protobuf", "local"}
+2025/11/28 23:40:33 Waiting for RPC address for: /home/skinoz/.config/packer/plugins/github.com/hashicorp/ansible/packer-plugin-ansible_v1.1.4_x5.0_linux_amd64
+2025/11/28 23:40:33 packer-plugin-ansible_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:33 Plugin address: unix /tmp/packer-plugin461818237
+2025/11/28 23:40:33 Received unix RPC address for /home/skinoz/.config/packer/plugins/github.com/hashicorp/ansible/packer-plugin-ansible_v1.1.4_x5.0_linux_amd64: addr is /tmp/packer-plugin461818237
+2025/11/28 23:40:33 packer-plugin-ansible_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:33 Waiting for connection...
+2025/11/28 23:40:33 packer-plugin-ansible_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:33 Serving a plugin connection...
+2025/11/28 23:40:33 packer-plugin-ansible_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:33 [TRACE] starting provisioner local
+2025/11/28 23:40:33 packer-plugin-ansible_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:33 [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:40:33 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:40:33 packer-plugin-ansible_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:33 [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:40:33 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:40:33 [INFO] Starting external plugin /usr/bin/packer execute --protobuf packer-provisioner-shell
+2025/11/28 23:40:33 Starting plugin: /usr/bin/packer []string{"/usr/bin/packer", "execute", "--protobuf", "packer-provisioner-shell"}
+2025/11/28 23:40:33 Waiting for RPC address for: /usr/bin/packer
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [INFO] Packer version: 1.14.3 [go1.24.0 linux amd64]
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [INFO] PACKER_CONFIG env var not set; checking the default config file path
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [INFO] PACKER_CONFIG env var set; attempting to open config file: /home/skinoz/.packerconfig
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [WARN] Config file doesn't exist: /home/skinoz/.packerconfig
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [INFO] Setting cache directory: /home/skinoz/.cache/packer
+2025/11/28 23:40:33 packer-provisioner-shell plugin: Plugin address: unix /tmp/packer-plugin571388744
+2025/11/28 23:40:33 Received unix RPC address for /usr/bin/packer: addr is /tmp/packer-plugin571388744
+2025/11/28 23:40:33 packer-provisioner-shell plugin: Waiting for connection...
+2025/11/28 23:40:33 packer-provisioner-shell plugin: Serving a plugin connection...
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:40:33 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:40:33 packer-provisioner-shell plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:40:33 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:40:33 [INFO] Starting external plugin /usr/bin/packer execute --protobuf packer-post-processor-manifest
+2025/11/28 23:40:33 Starting plugin: /usr/bin/packer []string{"/usr/bin/packer", "execute", "--protobuf", "packer-post-processor-manifest"}
+2025/11/28 23:40:33 Waiting for RPC address for: /usr/bin/packer
+2025/11/28 23:40:33 packer-post-processor-manifest plugin: [INFO] Packer version: 1.14.3 [go1.24.0 linux amd64]
+2025/11/28 23:40:33 packer-post-processor-manifest plugin: [INFO] PACKER_CONFIG env var not set; checking the default config file path
+2025/11/28 23:40:33 packer-post-processor-manifest plugin: [INFO] PACKER_CONFIG env var set; attempting to open config file: /home/skinoz/.packerconfig
+2025/11/28 23:40:33 packer-post-processor-manifest plugin: [WARN] Config file doesn't exist: /home/skinoz/.packerconfig
+2025/11/28 23:40:33 packer-post-processor-manifest plugin: [INFO] Setting cache directory: /home/skinoz/.cache/packer
+2025/11/28 23:40:33 packer-post-processor-manifest plugin: Plugin address: unix /tmp/packer-plugin2278024134
+2025/11/28 23:40:33 packer-post-processor-manifest plugin: Waiting for connection...
+2025/11/28 23:40:33 Received unix RPC address for /usr/bin/packer: addr is /tmp/packer-plugin2278024134
+2025/11/28 23:40:33 packer-post-processor-manifest plugin: Serving a plugin connection...
+2025/11/28 23:40:33 packer-post-processor-manifest plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:40:33 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:40:33 packer-post-processor-manifest plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:40:33 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:40:33 [INFO] Starting external plugin /usr/bin/packer execute --protobuf packer-post-processor-shell-local
+2025/11/28 23:40:33 Starting plugin: /usr/bin/packer []string{"/usr/bin/packer", "execute", "--protobuf", "packer-post-processor-shell-local"}
+2025/11/28 23:40:33 Waiting for RPC address for: /usr/bin/packer
+2025/11/28 23:40:33 packer-post-processor-shell-local plugin: [INFO] Packer version: 1.14.3 [go1.24.0 linux amd64]
+2025/11/28 23:40:33 packer-post-processor-shell-local plugin: [INFO] PACKER_CONFIG env var not set; checking the default config file path
+2025/11/28 23:40:33 packer-post-processor-shell-local plugin: [INFO] PACKER_CONFIG env var set; attempting to open config file: /home/skinoz/.packerconfig
+2025/11/28 23:40:33 packer-post-processor-shell-local plugin: [WARN] Config file doesn't exist: /home/skinoz/.packerconfig
+2025/11/28 23:40:33 packer-post-processor-shell-local plugin: [INFO] Setting cache directory: /home/skinoz/.cache/packer
+2025/11/28 23:40:33 packer-post-processor-shell-local plugin: Plugin address: unix /tmp/packer-plugin4256400641
+2025/11/28 23:40:33 packer-post-processor-shell-local plugin: Waiting for connection...
+2025/11/28 23:40:33 Received unix RPC address for /usr/bin/packer: addr is /tmp/packer-plugin4256400641
+2025/11/28 23:40:33 packer-post-processor-shell-local plugin: Serving a plugin connection...
+2025/11/28 23:40:33 packer-post-processor-shell-local plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:40:33 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:40:33 packer-post-processor-shell-local plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:40:33 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:40:33 ui: [1;32mqemu.debian12-database: output will be in this color.[0m
+2025/11/28 23:40:33 ui: 
+2025/11/28 23:40:33 Build debug mode: false
+2025/11/28 23:40:33 Force build: false
+2025/11/28 23:40:33 On error: abort
+2025/11/28 23:40:33 Waiting on builds to complete...
+2025/11/28 23:40:33 Starting build run: qemu.debian12-database
+2025/11/28 23:40:33 Running builder: qemu
+2025/11/28 23:40:33 [INFO] (telemetry) Starting builder qemu.debian12-database
+2025/11/28 23:40:33 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:33 Qemu path: /usr/bin/qemu-system-x86_64, Qemu Image path: /usr/bin/qemu-img
+2025/11/28 23:40:33 ui: [1;32m==> qemu.debian12-database: Retrieving ISO[0m
+2025/11/28 23:40:33 ui: [1;32m==> qemu.debian12-database: Trying https://cdimage.debian.org/cdimage/archive/12.7.0/amd64/iso-cd/debian-12.7.0-amd64-netinst.iso[0m
+2025/11/28 23:40:33 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:33 Acquiring lock for: https://cdimage.debian.org/cdimage/archive/12.7.0/amd64/iso-cd/debian-12.7.0-amd64-netinst.iso?checksum=sha256%3A8fde79cfc6b20a696200fc5c15219cf6d721e8feb367e9e0e33a79d1cb68fa83 (/home/skinoz/.cache/packer/84c521e98f7d58824ce69c1b7508d7e1b67443ea.iso.lock)
+2025/11/28 23:40:33 ui: [1;32m==> qemu.debian12-database: Trying https://cdimage.debian.org/cdimage/archive/12.7.0/amd64/iso-cd/debian-12.7.0-amd64-netinst.iso?checksum=sha256%3A8fde79cfc6b20a696200fc5c15219cf6d721e8feb367e9e0e33a79d1cb68fa83[0m
+2025/11/28 23:40:35 ui: [1;32m==> qemu.debian12-database: https://cdimage.debian.org/cdimage/archive/12.7.0/amd64/iso-cd/debian-12.7.0-amd64-netinst.iso?checksum=sha256%3A8fde79cfc6b20a696200fc5c15219cf6d721e8feb367e9e0e33a79d1cb68fa83 => /home/skinoz/.cache/packer/84c521e98f7d58824ce69c1b7508d7e1b67443ea.iso[0m
+2025/11/28 23:40:35 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:35 Leaving retrieve loop for ISO
+2025/11/28 23:40:35 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:35 No floppy files specified. Floppy disk will not be made.
+2025/11/28 23:40:35 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:35 No CD files specified. CD disk will not be made.
+2025/11/28 23:40:35 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:35 [INFO] Creating disk with Path: ../vm-images/database-1.1/database-1.1.qcow2 and Size: 20G
+2025/11/28 23:40:35 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:35 Executing qemu-img: []string{"create", "-f", "qcow2", "../vm-images/database-1.1/database-1.1.qcow2", "20G"}
+2025/11/28 23:40:35 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:35 stdout: Formatting '../vm-images/database-1.1/database-1.1.qcow2', fmt=qcow2 cluster_size=65536 extended_l2=off compression_type=zlib size=21474836480 lazy_refcounts=off refcount_bits=16
+2025/11/28 23:40:35 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:35 stderr:
+2025/11/28 23:40:35 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:35 Found available port: 8618 on IP: 0.0.0.0
+2025/11/28 23:40:35 ui: [1;32m==> qemu.debian12-database: Starting HTTP server on port 8618[0m
+2025/11/28 23:40:35 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:35 Looking for available communicator (SSH, WinRM, etc) port between 2222 and 4444
+2025/11/28 23:40:35 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:35 Found available port: 3610 on IP: 127.0.0.1
+2025/11/28 23:40:35 ui: [1;32m==> qemu.debian12-database: Found port for communicator (SSH, WinRM, etc): 3610.[0m
+2025/11/28 23:40:35 ui: [1;32m==> qemu.debian12-database: Creating temporary RSA SSH key for instance...[0m
+2025/11/28 23:40:37 ui: [1;32m==> qemu.debian12-database: Looking for available port between 5900 and 6000 on 127.0.0.1[0m
+2025/11/28 23:40:37 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:37 Looking for available port between 5900 and 6000 on 127.0.0.1
+2025/11/28 23:40:37 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:37 Found available port: 5981 on IP: 127.0.0.1
+2025/11/28 23:40:37 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:37 Found available VNC port: 5981 on IP: 127.0.0.1
+2025/11/28 23:40:37 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:37 Qemu --version output: QEMU emulator version 7.2.19 (Debian 1:7.2+dfsg-7+deb12u16)
+2025/11/28 23:40:37 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
+2025/11/28 23:40:37 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:37 Qemu version: 7.2.19
+2025/11/28 23:40:37 ui: [1;32m==> qemu.debian12-database: Starting VM, booting from CD-ROM[0m
+2025/11/28 23:40:37 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:37 Qemu Builder has no floppy files, not attaching a floppy.
+2025/11/28 23:40:37 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:37 Executing /usr/bin/qemu-system-x86_64: []string{"-boot", "once=d", "-drive", "file=../vm-images/database-1.1/database-1.1.qcow2,if=virtio,cache=writeback,discard=ignore,format=qcow2", "-drive", "file=/home/skinoz/.cache/packer/84c521e98f7d58824ce69c1b7508d7e1b67443ea.iso,media=cdrom", "-smp", "1", "-name", "database-1.1.qcow2", "-display", "gtk", "-device", "virtio-net,netdev=user.0", "-machine", "type=pc,accel=kvm", "-netdev", "user,id=user.0,hostfwd=tcp::3610-:22", "-vnc", "127.0.0.1:81", "-m", "1024M"}
+2025/11/28 23:40:37 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:37 Started Qemu. Pid: 31376
+2025/11/28 23:40:39 ui: [1;32m==> qemu.debian12-database: Waiting 5s for boot...[0m
+2025/11/28 23:40:44 ui: [1;32m==> qemu.debian12-database: Connecting to VM via VNC (127.0.0.1:5981)[0m
+2025/11/28 23:40:44 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:44 Connected to VNC desktop: QEMU (database-1.1.qcow2)
+2025/11/28 23:40:44 ui: [1;32m==> qemu.debian12-database: Typing the boot commands over VNC...[0m
+2025/11/28 23:40:44 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:44 Special code '<esc>' found, replacing with: 0xFF1B
+2025/11/28 23:40:44 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:44 [INFO] Waiting 1s
+2025/11/28 23:40:45 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:45 Sending char 'a', code 0x61, shift false
+2025/11/28 23:40:45 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:45 Sending char 'u', code 0x75, shift false
+2025/11/28 23:40:46 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:46 Sending char 't', code 0x74, shift false
+2025/11/28 23:40:46 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:46 Sending char 'o', code 0x6F, shift false
+2025/11/28 23:40:46 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:46 Sending char ' ', code 0x20, shift false
+2025/11/28 23:40:46 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:46 Sending char 'u', code 0x75, shift false
+2025/11/28 23:40:46 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:46 Sending char 'r', code 0x72, shift false
+2025/11/28 23:40:47 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:47 Sending char 'l', code 0x6C, shift false
+2025/11/28 23:40:47 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:47 Sending char '=', code 0x3D, shift false
+2025/11/28 23:40:47 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:47 Sending char 'h', code 0x68, shift false
+2025/11/28 23:40:47 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:47 Sending char 't', code 0x74, shift false
+2025/11/28 23:40:47 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:47 Sending char 't', code 0x74, shift false
+2025/11/28 23:40:48 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:48 Sending char 'p', code 0x70, shift false
+2025/11/28 23:40:48 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:48 Sending char ':', code 0x3A, shift true
+2025/11/28 23:40:48 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:48 Sending char '/', code 0x2F, shift false
+2025/11/28 23:40:48 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:48 Sending char '/', code 0x2F, shift false
+2025/11/28 23:40:49 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:49 Sending char '1', code 0x31, shift false
+2025/11/28 23:40:49 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:49 Sending char '0', code 0x30, shift false
+2025/11/28 23:40:49 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:49 Sending char '.', code 0x2E, shift false
+2025/11/28 23:40:49 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:49 Sending char '0', code 0x30, shift false
+2025/11/28 23:40:49 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:49 Sending char '.', code 0x2E, shift false
+2025/11/28 23:40:50 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:50 Sending char '2', code 0x32, shift false
+2025/11/28 23:40:50 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:50 Sending char '.', code 0x2E, shift false
+2025/11/28 23:40:50 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:50 Sending char '2', code 0x32, shift false
+2025/11/28 23:40:50 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:50 Sending char ':', code 0x3A, shift true
+2025/11/28 23:40:51 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:51 Sending char '8', code 0x38, shift false
+2025/11/28 23:40:51 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:51 Sending char '6', code 0x36, shift false
+2025/11/28 23:40:51 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:51 Sending char '1', code 0x31, shift false
+2025/11/28 23:40:51 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:51 Sending char '8', code 0x38, shift false
+2025/11/28 23:40:51 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:51 Sending char '/', code 0x2F, shift false
+2025/11/28 23:40:52 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:52 Sending char 'p', code 0x70, shift false
+2025/11/28 23:40:52 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:52 Sending char 'r', code 0x72, shift false
+2025/11/28 23:40:52 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:52 Sending char 'e', code 0x65, shift false
+2025/11/28 23:40:52 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:52 Sending char 's', code 0x73, shift false
+2025/11/28 23:40:52 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:52 Sending char 'e', code 0x65, shift false
+2025/11/28 23:40:53 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:53 Sending char 'e', code 0x65, shift false
+2025/11/28 23:40:53 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:53 Sending char 'd', code 0x64, shift false
+2025/11/28 23:40:53 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:53 Sending char '.', code 0x2E, shift false
+2025/11/28 23:40:53 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:53 Sending char 'c', code 0x63, shift false
+2025/11/28 23:40:53 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:53 Sending char 'f', code 0x66, shift false
+2025/11/28 23:40:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:54 Sending char 'g', code 0x67, shift false
+2025/11/28 23:40:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:54 Special code '<enter>' found, replacing with: 0xFF0D
+2025/11/28 23:40:54 ui: [1;32m==> qemu.debian12-database: Not using a NetBridge -- skipping StepWaitGuestAddress[0m
+2025/11/28 23:40:54 ui: [1;32m==> qemu.debian12-database: Using SSH communicator to connect: 127.0.0.1[0m
+2025/11/28 23:40:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:54 [INFO] Waiting for SSH, up to timeout: 20m0s
+2025/11/28 23:40:54 ui: [1;32m==> qemu.debian12-database: Waiting for SSH to become available...[0m
+2025/11/28 23:40:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:54 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:40:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:54 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:40:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:40:54 [DEBUG] handshaking with SSH
+2025/11/28 23:41:24 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:24 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:50862->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:41:31 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:31 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:41:31 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:31 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:41:31 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:31 [DEBUG] handshaking with SSH
+2025/11/28 23:41:31 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:31 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:33196->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:41:38 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:38 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:41:38 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:38 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:41:38 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:38 [DEBUG] handshaking with SSH
+2025/11/28 23:41:38 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:38 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:60530->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:41:45 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:45 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:41:45 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:45 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:41:45 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:45 [DEBUG] handshaking with SSH
+2025/11/28 23:41:45 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:45 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:60544->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:41:52 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:52 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:41:52 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:52 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:41:52 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:52 [DEBUG] handshaking with SSH
+2025/11/28 23:41:52 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:52 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:35078->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:41:59 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:59 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:41:59 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:59 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:41:59 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:59 [DEBUG] handshaking with SSH
+2025/11/28 23:41:59 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:41:59 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:45288->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:42:06 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:06 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:42:06 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:06 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:42:06 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:06 [DEBUG] handshaking with SSH
+2025/11/28 23:42:06 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:06 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:45308->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:42:13 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:13 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:42:13 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:13 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:42:13 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:13 [DEBUG] handshaking with SSH
+2025/11/28 23:42:13 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:13 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:56242->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:42:20 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:20 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:42:20 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:20 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:42:20 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:20 [DEBUG] handshaking with SSH
+2025/11/28 23:42:20 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:20 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:41672->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:42:27 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:27 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:42:27 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:27 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:42:27 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:27 [DEBUG] handshaking with SSH
+2025/11/28 23:42:27 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:27 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:45214->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:42:34 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:34 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:42:34 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:34 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:42:34 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:34 [DEBUG] handshaking with SSH
+2025/11/28 23:42:34 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:34 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:45236->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:42:41 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:41 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:42:41 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:41 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:42:41 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:41 [DEBUG] handshaking with SSH
+2025/11/28 23:42:41 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:41 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:41650->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:42:48 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:48 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:42:48 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:48 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:42:48 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:48 [DEBUG] handshaking with SSH
+2025/11/28 23:42:48 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:48 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:46084->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:42:55 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:55 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:42:55 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:55 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:42:55 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:55 [DEBUG] handshaking with SSH
+2025/11/28 23:42:55 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:42:55 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:46102->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:43:02 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:02 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:43:02 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:02 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:43:02 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:02 [DEBUG] handshaking with SSH
+2025/11/28 23:43:02 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:02 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:49824->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:43:09 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:09 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:43:09 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:09 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:43:09 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:09 [DEBUG] handshaking with SSH
+2025/11/28 23:43:09 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:09 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:58410->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:43:16 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:16 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:43:16 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:16 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:43:16 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:16 [DEBUG] handshaking with SSH
+2025/11/28 23:43:16 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:16 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:58428->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:43:23 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:23 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:43:23 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:23 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:43:23 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:23 [DEBUG] handshaking with SSH
+2025/11/28 23:43:23 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:23 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:35278->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:43:30 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:30 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:43:30 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:30 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:43:30 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:30 [DEBUG] handshaking with SSH
+2025/11/28 23:43:30 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:30 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:48904->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:43:37 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:37 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:43:37 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:37 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:43:37 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:37 [DEBUG] handshaking with SSH
+2025/11/28 23:43:37 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:37 [DEBUG] SSH handshake err: ssh: handshake failed: EOF
+2025/11/28 23:43:44 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:44 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:43:44 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:44 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:43:44 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:44 [DEBUG] handshaking with SSH
+2025/11/28 23:43:44 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:44 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:39628->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:43:51 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:51 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:43:51 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:51 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:43:51 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:51 [DEBUG] handshaking with SSH
+2025/11/28 23:43:51 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:51 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:59896->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:43:58 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:58 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:43:58 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:58 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:43:58 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:58 [DEBUG] handshaking with SSH
+2025/11/28 23:43:58 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:43:58 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:51634->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:44:05 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:05 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:44:05 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:05 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:44:05 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:05 [DEBUG] handshaking with SSH
+2025/11/28 23:44:05 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:05 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:51656->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:44:12 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:12 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:44:12 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:12 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:44:12 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:12 [DEBUG] handshaking with SSH
+2025/11/28 23:44:12 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:12 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:43864->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:44:19 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:19 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:44:19 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:19 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:44:19 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:19 [DEBUG] handshaking with SSH
+2025/11/28 23:44:19 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:19 [DEBUG] SSH handshake err: ssh: handshake failed: EOF
+2025/11/28 23:44:26 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:26 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:44:26 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:26 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:44:26 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:26 [DEBUG] handshaking with SSH
+2025/11/28 23:44:26 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:26 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:35502->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:44:33 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:33 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:44:33 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:33 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:44:33 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:33 [DEBUG] handshaking with SSH
+2025/11/28 23:44:33 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:33 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:37264->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:44:40 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:40 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:44:40 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:40 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:44:40 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:40 [DEBUG] handshaking with SSH
+2025/11/28 23:44:40 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:40 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:41986->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:44:47 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:47 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:44:47 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:47 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:44:47 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:47 [DEBUG] handshaking with SSH
+2025/11/28 23:44:47 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:47 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:33330->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:44:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:54 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:44:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:54 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:44:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:54 [DEBUG] handshaking with SSH
+2025/11/28 23:44:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:44:54 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:33352->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:45:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:01 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:45:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:01 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:45:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:01 [DEBUG] handshaking with SSH
+2025/11/28 23:45:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:01 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:56672->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:45:08 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:08 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:45:08 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:08 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:45:08 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:08 [DEBUG] handshaking with SSH
+2025/11/28 23:45:08 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:08 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:56086->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:45:15 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:15 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:45:15 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:15 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:45:15 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:15 [DEBUG] handshaking with SSH
+2025/11/28 23:45:15 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:15 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:56102->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:45:22 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:22 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:45:22 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:22 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:45:22 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:22 [DEBUG] handshaking with SSH
+2025/11/28 23:45:22 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:22 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:50122->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:45:29 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:29 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:45:29 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:29 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:45:29 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:29 [DEBUG] handshaking with SSH
+2025/11/28 23:45:29 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:29 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:49038->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:45:36 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:36 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:45:36 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:36 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:45:36 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:36 [DEBUG] handshaking with SSH
+2025/11/28 23:45:36 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:36 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:49064->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:45:43 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:43 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:45:43 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:43 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:45:43 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:43 [DEBUG] handshaking with SSH
+2025/11/28 23:45:43 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:43 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:56282->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:45:50 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:50 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:45:50 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:50 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:45:50 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:50 [DEBUG] handshaking with SSH
+2025/11/28 23:45:50 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:50 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:55028->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:45:57 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:57 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:45:57 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:57 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:45:57 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:57 [DEBUG] handshaking with SSH
+2025/11/28 23:45:57 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:45:57 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:46844->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:46:04 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:04 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:46:04 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:04 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:46:04 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:04 [DEBUG] handshaking with SSH
+2025/11/28 23:46:04 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:04 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:46858->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:46:11 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:11 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:46:11 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:11 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:46:11 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:11 [DEBUG] handshaking with SSH
+2025/11/28 23:46:11 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:11 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:50570->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:46:18 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:18 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:46:18 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:18 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:46:18 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:18 [DEBUG] handshaking with SSH
+2025/11/28 23:46:18 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:18 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:50840->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:46:25 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:25 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:46:25 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:25 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:46:25 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:25 [DEBUG] handshaking with SSH
+2025/11/28 23:46:25 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:25 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:50858->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:46:32 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:32 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:46:32 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:32 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:46:32 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:32 [DEBUG] handshaking with SSH
+2025/11/28 23:46:32 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:32 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:34586->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:46:40 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:40 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:46:40 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:40 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:46:40 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:40 [DEBUG] handshaking with SSH
+2025/11/28 23:46:40 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:40 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:60062->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:46:47 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:47 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:46:47 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:47 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:46:47 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:47 [DEBUG] handshaking with SSH
+2025/11/28 23:46:47 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:47 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:60086->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:46:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:54 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:46:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:54 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:46:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:54 [DEBUG] handshaking with SSH
+2025/11/28 23:46:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:46:54 [DEBUG] SSH handshake err: ssh: handshake failed: EOF
+2025/11/28 23:47:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:01 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:47:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:01 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:47:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:01 [DEBUG] handshaking with SSH
+2025/11/28 23:47:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:01 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:54434->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:47:08 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:08 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:47:08 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:08 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:47:08 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:08 [DEBUG] handshaking with SSH
+2025/11/28 23:47:08 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:08 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:46256->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:47:15 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:15 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:47:15 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:15 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:47:15 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:15 [DEBUG] handshaking with SSH
+2025/11/28 23:47:15 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:15 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:46266->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:47:22 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:22 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:47:22 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:22 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:47:22 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:22 [DEBUG] handshaking with SSH
+2025/11/28 23:47:22 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:22 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:59132->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:47:29 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:29 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:47:29 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:29 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:47:29 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:29 [DEBUG] handshaking with SSH
+2025/11/28 23:47:29 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:29 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:51228->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:47:36 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:36 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:47:36 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:36 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:47:36 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:36 [DEBUG] handshaking with SSH
+2025/11/28 23:47:36 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:36 [DEBUG] SSH handshake err: ssh: handshake failed: read tcp 127.0.0.1:51242->127.0.0.1:3610: read: connection reset by peer
+2025/11/28 23:47:43 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:43 [INFO] Attempting SSH connection to 127.0.0.1:3610...
+2025/11/28 23:47:43 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:43 [DEBUG] reconnecting to TCP connection for SSH
+2025/11/28 23:47:43 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:47:43 [DEBUG] handshaking with SSH
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] handshake complete!
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Opening new ssh session
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [INFO] agent forwarding enabled
+2025/11/28 23:48:01 ui: [1;32m==> qemu.debian12-database: Connected to SSH![0m
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 Running the provision hook
+2025/11/28 23:48:01 [INFO] (telemetry) Starting provisioner file
+2025/11/28 23:48:01 packer-provisioner-file plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:48:01 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:48:01 ui: [1;32m==> qemu.debian12-database: Uploading /home/skinoz/.ssh/id_rsa.pub => /tmp/authorized_keys[0m
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Opening new ssh session
+2025/11/28 23:48:01 packer-provisioner-file plugin: [INFO] 567 bytes written for 'uploadData'
+2025/11/28 23:48:01 [INFO] 567 bytes written for 'uploadData'
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Starting remote scp process:  scp -vt /tmp
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Started SCP session, beginning transfers...
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] scp: Uploading authorized_keys: perms=C0644 size=567
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] SCP session complete, closing stdin pipe.
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Waiting for SSH session to complete.
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] scp stderr (length 71): Sink: C0644 567 authorized_keys
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: scp: debug1: fd 0 clearing O_NONBLOCK
+2025/11/28 23:48:01 packer-provisioner-file plugin: closing
+2025/11/28 23:48:01 closing
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 closing
+2025/11/28 23:48:01 [INFO] (telemetry) ending file
+2025/11/28 23:48:01 [INFO] (telemetry) Starting provisioner shell
+2025/11/28 23:48:01 packer-provisioner-shell plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:48:01 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:48:01 ui: [1;32m==> qemu.debian12-database: Provisioning with shell script: /tmp/packer-shell4006856394[0m
+2025/11/28 23:48:01 packer-provisioner-shell plugin: Opening /tmp/packer-shell4006856394 for reading
+2025/11/28 23:48:01 packer-provisioner-shell plugin: [INFO] 419 bytes written for 'uploadData'
+2025/11/28 23:48:01 [INFO] 419 bytes written for 'uploadData'
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Opening new ssh session
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Starting remote scp process:  scp -vt /tmp
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Started SCP session, beginning transfers...
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Copying input data into temporary file so we can read the length
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] scp: Uploading script_6116.sh: perms=C0644 size=419
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] SCP session complete, closing stdin pipe.
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Waiting for SSH session to complete.
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] scp stderr (length 70): Sink: C0644 419 script_6116.sh
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: scp: debug1: fd 0 clearing O_NONBLOCK
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Opening new ssh session
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] starting remote command: chmod 0755 /tmp/script_6116.sh
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:48:01 [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:48:01 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:48:01 packer-provisioner-shell plugin: [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Opening new ssh session
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] starting remote command: chmod +x /tmp/script_6116.sh; PACKER_BUILDER_TYPE='qemu' PACKER_BUILD_NAME='debian12-database' PACKER_HTTP_ADDR='10.0.2.2:8618' PACKER_HTTP_IP='10.0.2.2' PACKER_HTTP_PORT='8618'  /tmp/script_6116.sh
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:48:01 [INFO] 0 bytes written for 'stdout'
+2025/11/28 23:48:01 [INFO] 0 bytes written for 'stderr'
+2025/11/28 23:48:01 [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:48:01 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:48:01 packer-provisioner-shell plugin: [INFO] 0 bytes written for 'stdout'
+2025/11/28 23:48:01 packer-provisioner-shell plugin: [INFO] 0 bytes written for 'stderr'
+2025/11/28 23:48:01 packer-provisioner-shell plugin: [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Opening new ssh session
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] starting remote command: rm -f /tmp/script_6116.sh
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:48:01 [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:48:01 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:48:01 packer-provisioner-shell plugin: [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Opening new ssh session
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] starting remote command: rm -f
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:48:01 [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:48:01 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:48:01 packer-provisioner-shell plugin: [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:48:01 [INFO] (telemetry) ending shell
+2025/11/28 23:48:01 [INFO] (telemetry) Starting provisioner shell
+2025/11/28 23:48:01 packer-provisioner-shell plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:48:01 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:48:01 ui: [1;32m==> qemu.debian12-database: Provisioning with shell script: /tmp/packer-shell617878931[0m
+2025/11/28 23:48:01 packer-provisioner-shell plugin: Opening /tmp/packer-shell617878931 for reading
+2025/11/28 23:48:01 packer-provisioner-shell plugin: [INFO] 99 bytes written for 'uploadData'
+2025/11/28 23:48:01 [INFO] 99 bytes written for 'uploadData'
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Opening new ssh session
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Starting remote scp process:  scp -vt /tmp
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Started SCP session, beginning transfers...
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Copying input data into temporary file so we can read the length
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] scp: Uploading script_2269.sh: perms=C0644 size=99
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] SCP session complete, closing stdin pipe.
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Waiting for SSH session to complete.
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] scp stderr (length 69): Sink: C0644 99 script_2269.sh
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: scp: debug1: fd 0 clearing O_NONBLOCK
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Opening new ssh session
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] starting remote command: chmod 0755 /tmp/script_2269.sh
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:48:01 [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:48:01 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:48:01 packer-provisioner-shell plugin: [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] Opening new ssh session
+2025/11/28 23:48:01 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:01 [DEBUG] starting remote command: chmod +x /tmp/script_2269.sh; PACKER_BUILDER_TYPE='qemu' PACKER_BUILD_NAME='debian12-database' PACKER_HTTP_ADDR='10.0.2.2:8618' PACKER_HTTP_IP='10.0.2.2' PACKER_HTTP_PORT='8618'  /tmp/script_2269.sh
+2025/11/28 23:48:01 ui: [1;32m==> qemu.debian12-database: Hit:1 http://security.debian.org/debian-security bookworm-security InRelease[0m
+2025/11/28 23:48:01 ui: [1;32m==> qemu.debian12-database: Hit:2 http://deb.debian.org/debian bookworm InRelease[0m
+2025/11/28 23:48:01 ui: [1;32m==> qemu.debian12-database: Hit:3 http://deb.debian.org/debian bookworm-updates InRelease[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database: Reading package lists...[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database: Reading package lists...[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database: Building dependency tree...[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database: Reading state information...[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database: The following additional packages will be installed:[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   ansible-core ieee-data python3-anyio python3-argcomplete python3-click[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   python3-colorama python3-distutils python3-dnspython python3-h11 python3-h2[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   python3-hpack python3-httpcore python3-httpx python3-hyperframe[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   python3-jmespath python3-kerberos python3-lib2to3 python3-libcloud[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   python3-lockfile python3-markdown-it python3-mdurl python3-netaddr[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   python3-ntlm-auth python3-packaging python3-passlib python3-pygments[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   python3-requests-kerberos python3-requests-ntlm python3-requests-toolbelt[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   python3-resolvelib python3-rfc3986 python3-rich python3-selinux[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   python3-simplejson python3-sniffio python3-winrm python3-xmltodict[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database: Suggested packages:[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   cowsay sshpass python3-trio python3-aioquic python-lockfile-doc ipython3[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   python-netaddr-docs python-pygments-doc ttf-bitstream-vera[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database: The following NEW packages will be installed:[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   ansible ansible-core ieee-data python3-anyio python3-argcomplete[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   python3-click python3-colorama python3-distutils python3-dnspython[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   python3-h11 python3-h2 python3-hpack python3-httpcore python3-httpx[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   python3-hyperframe python3-jmespath python3-kerberos python3-lib2to3[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   python3-libcloud python3-lockfile python3-markdown-it python3-mdurl[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   python3-netaddr python3-ntlm-auth python3-packaging python3-passlib[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   python3-pygments python3-requests-kerberos python3-requests-ntlm[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   python3-requests-toolbelt python3-resolvelib python3-rfc3986 python3-rich[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   python3-selinux python3-simplejson python3-sniffio python3-winrm[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database:   python3-xmltodict[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database: 0 upgraded, 38 newly installed, 0 to remove and 0 not upgraded.[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database: Need to get 24.1 MB of archives.[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database: After this operation, 311 MB of additional disk space will be used.[0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database: Get:1 http://deb.debian.org/debian bookworm/main amd64 python3-packaging all 23.0-1 [32.5 kB][0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database: Get:2 http://deb.debian.org/debian bookworm/main amd64 python3-resolvelib all 0.9.0-2 [27.3 kB][0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database: Get:3 http://deb.debian.org/debian bookworm/main amd64 python3-lib2to3 all 3.11.2-3 [76.3 kB][0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database: Get:4 http://deb.debian.org/debian bookworm/main amd64 python3-distutils all 3.11.2-3 [131 kB][0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database: Get:5 http://deb.debian.org/debian bookworm/main amd64 python3-dnspython all 2.3.0-1 [152 kB][0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database: Get:6 http://deb.debian.org/debian bookworm/main amd64 ieee-data all 20220827.1 [2,029 kB][0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database: Get:7 http://deb.debian.org/debian bookworm/main amd64 python3-netaddr all 0.8.0-2 [295 kB][0m
+2025/11/28 23:48:03 ui: [1;32m==> qemu.debian12-database: Get:8 http://deb.debian.org/debian bookworm/main amd64 ansible-core all 2.14.18-0+deb12u2 [1,291 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:9 http://deb.debian.org/debian bookworm/main amd64 ansible all 7.7.0+dfsg-3+deb12u1 [16.9 MB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:10 http://deb.debian.org/debian bookworm/main amd64 python3-sniffio all 1.2.0-1 [6,372 B][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:11 http://deb.debian.org/debian bookworm/main amd64 python3-anyio all 3.6.2-1 [54.0 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:12 http://deb.debian.org/debian bookworm/main amd64 python3-argcomplete all 2.0.0-1 [34.7 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:13 http://deb.debian.org/debian bookworm/main amd64 python3-colorama all 0.4.6-2 [36.8 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:14 http://deb.debian.org/debian bookworm/main amd64 python3-click all 8.1.3-2 [92.2 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:15 http://deb.debian.org/debian bookworm/main amd64 python3-h11 all 0.14.0-1.1~deb12u1 [50.6 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:16 http://deb.debian.org/debian bookworm/main amd64 python3-hpack all 4.0.0-2 [25.0 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:17 http://deb.debian.org/debian bookworm/main amd64 python3-hyperframe all 6.0.0-1 [14.5 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:18 http://deb.debian.org/debian bookworm/main amd64 python3-h2 all 4.1.0-4 [80.8 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:19 http://deb.debian.org/debian bookworm/main amd64 python3-httpcore all 0.16.3-1 [38.4 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:20 http://deb.debian.org/debian bookworm/main amd64 python3-pygments all 2.14.0+dfsg-1 [783 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:21 http://deb.debian.org/debian bookworm/main amd64 python3-mdurl all 0.1.2-1 [9,444 B][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:22 http://deb.debian.org/debian bookworm/main amd64 python3-markdown-it all 2.1.0-5 [58.8 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:23 http://deb.debian.org/debian bookworm/main amd64 python3-rich all 13.3.1-1 [202 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:24 http://deb.debian.org/debian bookworm/main amd64 python3-rfc3986 all 1.5.0-2 [22.2 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:25 http://deb.debian.org/debian bookworm/main amd64 python3-httpx all 0.23.3-1 [72.3 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:26 http://deb.debian.org/debian bookworm/main amd64 python3-jmespath all 1.0.1-1 [21.1 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:27 http://deb.debian.org/debian bookworm/main amd64 python3-kerberos amd64 1.1.14-3.1+b7 [21.5 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:28 http://deb.debian.org/debian bookworm/main amd64 python3-lockfile all 1:0.12.2-2.2 [17.3 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:29 http://deb.debian.org/debian bookworm/main amd64 python3-simplejson amd64 3.18.3-1 [59.8 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:30 http://deb.debian.org/debian bookworm/main amd64 python3-libcloud all 3.4.1-5 [808 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:31 http://deb.debian.org/debian bookworm/main amd64 python3-ntlm-auth all 1.4.0-2 [21.9 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:32 http://deb.debian.org/debian bookworm/main amd64 python3-passlib all 1.7.4-3 [367 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:33 http://deb.debian.org/debian bookworm/main amd64 python3-requests-kerberos all 0.12.0-2 [13.0 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:34 http://deb.debian.org/debian bookworm/main amd64 python3-requests-ntlm all 1.1.0-3 [6,268 B][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:35 http://deb.debian.org/debian bookworm/main amd64 python3-requests-toolbelt all 0.10.1-1 [41.3 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:36 http://deb.debian.org/debian bookworm/main amd64 python3-selinux amd64 3.4-1+b6 [152 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:37 http://deb.debian.org/debian bookworm/main amd64 python3-xmltodict all 0.13.0-1 [16.7 kB][0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Get:38 http://deb.debian.org/debian bookworm/main amd64 python3-winrm all 0.3.0-4+deb12u1 [22.1 kB][0m
+2025/11/28 23:48:04 ui error: [1;31m==> qemu.debian12-database: debconf: unable to initialize frontend: Dialog[0m
+2025/11/28 23:48:04 ui error: [1;31m==> qemu.debian12-database: debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)[0m
+2025/11/28 23:48:04 ui error: [1;31m==> qemu.debian12-database: debconf: falling back to frontend: Readline[0m
+2025/11/28 23:48:04 ui error: [1;31m==> qemu.debian12-database: debconf: unable to initialize frontend: Readline[0m
+2025/11/28 23:48:04 ui error: [1;31m==> qemu.debian12-database: debconf: (This frontend requires a controlling tty.)[0m
+2025/11/28 23:48:04 ui error: [1;31m==> qemu.debian12-database: debconf: falling back to frontend: Teletype[0m
+2025/11/28 23:48:04 ui error: [1;31m==> qemu.debian12-database: dpkg-preconfigure: unable to re-open stdin:[0m
+2025/11/28 23:48:04 ui: [1;32m==> qemu.debian12-database: Fetched 24.1 MB in 1s (43.3 MB/s)[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-packaging.[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: (Reading database ... 35389 files and directories currently installed.)[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../00-python3-packaging_23.0-1_all.deb ...[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: Unpacking python3-packaging (23.0-1) ...[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-resolvelib.[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../01-python3-resolvelib_0.9.0-2_all.deb ...[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: Unpacking python3-resolvelib (0.9.0-2) ...[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-lib2to3.[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../02-python3-lib2to3_3.11.2-3_all.deb ...[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: Unpacking python3-lib2to3 (3.11.2-3) ...[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-distutils.[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../03-python3-distutils_3.11.2-3_all.deb ...[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: Unpacking python3-distutils (3.11.2-3) ...[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-dnspython.[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../04-python3-dnspython_2.3.0-1_all.deb ...[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: Unpacking python3-dnspython (2.3.0-1) ...[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package ieee-data.[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../05-ieee-data_20220827.1_all.deb ...[0m
+2025/11/28 23:48:05 ui: [1;32m==> qemu.debian12-database: Unpacking ieee-data (20220827.1) ...[0m
+2025/11/28 23:48:06 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-netaddr.[0m
+2025/11/28 23:48:06 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../06-python3-netaddr_0.8.0-2_all.deb ...[0m
+2025/11/28 23:48:06 ui: [1;32m==> qemu.debian12-database: Unpacking python3-netaddr (0.8.0-2) ...[0m
+2025/11/28 23:48:06 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package ansible-core.[0m
+2025/11/28 23:48:06 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../07-ansible-core_2.14.18-0+deb12u2_all.deb ...[0m
+2025/11/28 23:48:06 ui: [1;32m==> qemu.debian12-database: Unpacking ansible-core (2.14.18-0+deb12u2) ...[0m
+2025/11/28 23:48:06 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package ansible.[0m
+2025/11/28 23:48:06 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../08-ansible_7.7.0+dfsg-3+deb12u1_all.deb ...[0m
+2025/11/28 23:48:06 ui: [1;32m==> qemu.debian12-database: Unpacking ansible (7.7.0+dfsg-3+deb12u1) ...[0m
+2025/11/28 23:48:15 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-sniffio.[0m
+2025/11/28 23:48:15 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../09-python3-sniffio_1.2.0-1_all.deb ...[0m
+2025/11/28 23:48:15 ui: [1;32m==> qemu.debian12-database: Unpacking python3-sniffio (1.2.0-1) ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-anyio.[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../10-python3-anyio_3.6.2-1_all.deb ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Unpacking python3-anyio (3.6.2-1) ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-argcomplete.[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../11-python3-argcomplete_2.0.0-1_all.deb ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Unpacking python3-argcomplete (2.0.0-1) ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-colorama.[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../12-python3-colorama_0.4.6-2_all.deb ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Unpacking python3-colorama (0.4.6-2) ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-click.[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../13-python3-click_8.1.3-2_all.deb ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Unpacking python3-click (8.1.3-2) ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-h11.[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../14-python3-h11_0.14.0-1.1~deb12u1_all.deb ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Unpacking python3-h11 (0.14.0-1.1~deb12u1) ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-hpack.[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../15-python3-hpack_4.0.0-2_all.deb ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Unpacking python3-hpack (4.0.0-2) ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-hyperframe.[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../16-python3-hyperframe_6.0.0-1_all.deb ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Unpacking python3-hyperframe (6.0.0-1) ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-h2.[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../17-python3-h2_4.1.0-4_all.deb ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Unpacking python3-h2 (4.1.0-4) ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-httpcore.[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../18-python3-httpcore_0.16.3-1_all.deb ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Unpacking python3-httpcore (0.16.3-1) ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-pygments.[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../19-python3-pygments_2.14.0+dfsg-1_all.deb ...[0m
+2025/11/28 23:48:16 ui: [1;32m==> qemu.debian12-database: Unpacking python3-pygments (2.14.0+dfsg-1) ...[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-mdurl.[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../20-python3-mdurl_0.1.2-1_all.deb ...[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Unpacking python3-mdurl (0.1.2-1) ...[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-markdown-it.[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../21-python3-markdown-it_2.1.0-5_all.deb ...[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Unpacking python3-markdown-it (2.1.0-5) ...[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-rich.[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../22-python3-rich_13.3.1-1_all.deb ...[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Unpacking python3-rich (13.3.1-1) ...[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-rfc3986.[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../23-python3-rfc3986_1.5.0-2_all.deb ...[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Unpacking python3-rfc3986 (1.5.0-2) ...[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-httpx.[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../24-python3-httpx_0.23.3-1_all.deb ...[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Unpacking python3-httpx (0.23.3-1) ...[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-jmespath.[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../25-python3-jmespath_1.0.1-1_all.deb ...[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Unpacking python3-jmespath (1.0.1-1) ...[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-kerberos.[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../26-python3-kerberos_1.1.14-3.1+b7_amd64.deb ...[0m
+2025/11/28 23:48:17 ui: [1;32m==> qemu.debian12-database: Unpacking python3-kerberos (1.1.14-3.1+b7) ...[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-lockfile.[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../27-python3-lockfile_1%3a0.12.2-2.2_all.deb ...[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Unpacking python3-lockfile (1:0.12.2-2.2) ...[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-simplejson.[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../28-python3-simplejson_3.18.3-1_amd64.deb ...[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Unpacking python3-simplejson (3.18.3-1) ...[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-libcloud.[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../29-python3-libcloud_3.4.1-5_all.deb ...[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Unpacking python3-libcloud (3.4.1-5) ...[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-ntlm-auth.[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../30-python3-ntlm-auth_1.4.0-2_all.deb ...[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Unpacking python3-ntlm-auth (1.4.0-2) ...[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-passlib.[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../31-python3-passlib_1.7.4-3_all.deb ...[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Unpacking python3-passlib (1.7.4-3) ...[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-requests-kerberos.[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../32-python3-requests-kerberos_0.12.0-2_all.deb ...[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Unpacking python3-requests-kerberos (0.12.0-2) ...[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-requests-ntlm.[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../33-python3-requests-ntlm_1.1.0-3_all.deb ...[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Unpacking python3-requests-ntlm (1.1.0-3) ...[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-requests-toolbelt.[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../34-python3-requests-toolbelt_0.10.1-1_all.deb ...[0m
+2025/11/28 23:48:18 ui: [1;32m==> qemu.debian12-database: Unpacking python3-requests-toolbelt (0.10.1-1) ...[0m
+2025/11/28 23:48:19 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-selinux.[0m
+2025/11/28 23:48:19 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../35-python3-selinux_3.4-1+b6_amd64.deb ...[0m
+2025/11/28 23:48:19 ui: [1;32m==> qemu.debian12-database: Unpacking python3-selinux (3.4-1+b6) ...[0m
+2025/11/28 23:48:19 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-xmltodict.[0m
+2025/11/28 23:48:19 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../36-python3-xmltodict_0.13.0-1_all.deb ...[0m
+2025/11/28 23:48:19 ui: [1;32m==> qemu.debian12-database: Unpacking python3-xmltodict (0.13.0-1) ...[0m
+2025/11/28 23:48:19 ui: [1;32m==> qemu.debian12-database: Selecting previously unselected package python3-winrm.[0m
+2025/11/28 23:48:19 ui: [1;32m==> qemu.debian12-database: Preparing to unpack .../37-python3-winrm_0.3.0-4+deb12u1_all.deb ...[0m
+2025/11/28 23:48:19 ui: [1;32m==> qemu.debian12-database: Unpacking python3-winrm (0.3.0-4+deb12u1) ...[0m
+2025/11/28 23:48:19 ui: [1;32m==> qemu.debian12-database: Setting up python3-sniffio (1.2.0-1) ...[0m
+2025/11/28 23:48:19 ui: [1;32m==> qemu.debian12-database: Setting up python3-lockfile (1:0.12.2-2.2) ...[0m
+2025/11/28 23:48:19 ui: [1;32m==> qemu.debian12-database: Setting up python3-requests-toolbelt (0.10.1-1) ...[0m
+2025/11/28 23:48:20 ui: [1;32m==> qemu.debian12-database: Setting up python3-passlib (1.7.4-3) ...[0m
+2025/11/28 23:48:20 ui: [1;32m==> qemu.debian12-database: Setting up python3-anyio (3.6.2-1) ...[0m
+2025/11/28 23:48:20 ui: [1;32m==> qemu.debian12-database: Setting up python3-hyperframe (6.0.0-1) ...[0m
+2025/11/28 23:48:21 ui: [1;32m==> qemu.debian12-database: Setting up python3-hpack (4.0.0-2) ...[0m
+2025/11/28 23:48:21 ui: [1;32m==> qemu.debian12-database: Setting up python3-colorama (0.4.6-2) ...[0m
+2025/11/28 23:48:21 ui: [1;32m==> qemu.debian12-database: Setting up python3-ntlm-auth (1.4.0-2) ...[0m
+2025/11/28 23:48:22 ui: [1;32m==> qemu.debian12-database: Setting up python3-resolvelib (0.9.0-2) ...[0m
+2025/11/28 23:48:22 ui: [1;32m==> qemu.debian12-database: Setting up python3-kerberos (1.1.14-3.1+b7) ...[0m
+2025/11/28 23:48:22 ui: [1;32m==> qemu.debian12-database: Setting up python3-click (8.1.3-2) ...[0m
+2025/11/28 23:48:22 ui: [1;32m==> qemu.debian12-database: Setting up python3-simplejson (3.18.3-1) ...[0m
+2025/11/28 23:48:22 ui: [1;32m==> qemu.debian12-database: Setting up python3-xmltodict (0.13.0-1) ...[0m
+2025/11/28 23:48:23 ui: [1;32m==> qemu.debian12-database: Setting up python3-pygments (2.14.0+dfsg-1) ...[0m
+2025/11/28 23:48:24 ui: [1;32m==> qemu.debian12-database: Setting up python3-packaging (23.0-1) ...[0m
+2025/11/28 23:48:24 ui: [1;32m==> qemu.debian12-database: Setting up python3-rfc3986 (1.5.0-2) ...[0m
+2025/11/28 23:48:24 ui: [1;32m==> qemu.debian12-database: Setting up python3-jmespath (1.0.1-1) ...[0m
+2025/11/28 23:48:24 ui: [1;32m==> qemu.debian12-database: Setting up python3-mdurl (0.1.2-1) ...[0m
+2025/11/28 23:48:25 ui: [1;32m==> qemu.debian12-database: Setting up python3-h11 (0.14.0-1.1~deb12u1) ...[0m
+2025/11/28 23:48:25 ui: [1;32m==> qemu.debian12-database: Setting up python3-markdown-it (2.1.0-5) ...[0m
+2025/11/28 23:48:25 ui: [1;32m==> qemu.debian12-database: Setting up python3-requests-kerberos (0.12.0-2) ...[0m
+2025/11/28 23:48:26 ui: [1;32m==> qemu.debian12-database: Setting up ieee-data (20220827.1) ...[0m
+2025/11/28 23:48:26 ui: [1;32m==> qemu.debian12-database: Setting up python3-dnspython (2.3.0-1) ...[0m
+2025/11/28 23:48:26 ui: [1;32m==> qemu.debian12-database: Setting up python3-selinux (3.4-1+b6) ...[0m
+2025/11/28 23:48:26 ui: [1;32m==> qemu.debian12-database: Setting up python3-h2 (4.1.0-4) ...[0m
+2025/11/28 23:48:27 ui: [1;32m==> qemu.debian12-database: Setting up python3-argcomplete (2.0.0-1) ...[0m
+2025/11/28 23:48:27 ui: [1;32m==> qemu.debian12-database: Setting up python3-lib2to3 (3.11.2-3) ...[0m
+2025/11/28 23:48:27 ui: [1;32m==> qemu.debian12-database: Setting up python3-distutils (3.11.2-3) ...[0m
+2025/11/28 23:48:27 ui: [1;32m==> qemu.debian12-database: Setting up python3-httpcore (0.16.3-1) ...[0m
+2025/11/28 23:48:28 ui: [1;32m==> qemu.debian12-database: Setting up python3-requests-ntlm (1.1.0-3) ...[0m
+2025/11/28 23:48:28 ui: [1;32m==> qemu.debian12-database: Setting up python3-rich (13.3.1-1) ...[0m
+2025/11/28 23:48:28 ui: [1;32m==> qemu.debian12-database: Setting up python3-libcloud (3.4.1-5) ...[0m
+2025/11/28 23:48:29 ui: [1;32m==> qemu.debian12-database: Setting up python3-httpx (0.23.3-1) ...[0m
+2025/11/28 23:48:30 ui: [1;32m==> qemu.debian12-database: Setting up python3-netaddr (0.8.0-2) ...[0m
+2025/11/28 23:48:30 ui: [1;32m==> qemu.debian12-database: Setting up python3-winrm (0.3.0-4+deb12u1) ...[0m
+2025/11/28 23:48:30 ui: [1;32m==> qemu.debian12-database: Setting up ansible-core (2.14.18-0+deb12u2) ...[0m
+2025/11/28 23:48:32 ui: [1;32m==> qemu.debian12-database: Setting up ansible (7.7.0+dfsg-3+deb12u1) ...[0m
+2025/11/28 23:48:53 ui: [1;32m==> qemu.debian12-database: Processing triggers for man-db (2.11.2-2) ...[0m
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:48:54 [INFO] 401 bytes written for 'stderr'
+2025/11/28 23:48:54 [INFO] 14441 bytes written for 'stdout'
+2025/11/28 23:48:54 [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:48:54 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:48:54 packer-provisioner-shell plugin: [INFO] 14441 bytes written for 'stdout'
+2025/11/28 23:48:54 packer-provisioner-shell plugin: [INFO] 401 bytes written for 'stderr'
+2025/11/28 23:48:54 packer-provisioner-shell plugin: [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Opening new ssh session
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] starting remote command: rm -f /tmp/script_2269.sh
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:48:54 [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:48:54 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:48:54 packer-provisioner-shell plugin: [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Opening new ssh session
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] starting remote command: rm -f
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:48:54 [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:48:54 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:48:54 packer-provisioner-shell plugin: [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:48:54 [INFO] (telemetry) ending shell
+2025/11/28 23:48:54 [INFO] (telemetry) Starting provisioner file
+2025/11/28 23:48:54 packer-provisioner-file plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:48:54 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:48:54 ui: [1;32m==> qemu.debian12-database: Uploading ../ansible => /tmp/[0m
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Upload dir '../ansible' to '/tmp/'
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Opening new ssh session
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Starting remote scp process:  scp -rvt /tmp/
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Started SCP session, beginning transfers...
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] scp: No trailing slash, creating directory /tmp//ansible
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] SCP: starting directory upload: ansible
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] scp: uploading directory ../ansible
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] SCP: starting directory upload: playbooks
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] scp: uploading directory ../ansible/playbooks
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] scp: Uploading haproxy.yml: perms=C0644 size=4424
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] scp: Uploading database.yml: perms=C0644 size=18472
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] scp: Uploading backend.yml: perms=C0644 size=3610
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] scp: Uploading web.yml: perms=C0644 size=4146
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] SCP: starting directory upload: templates
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] scp: uploading directory ../ansible/templates
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] scp: Uploading backend-api.js.j2: perms=C0644 size=4853
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] scp: Uploading nginx-template.conf.j2: perms=C0644 size=426
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] scp: Uploading index.html.j2: perms=C0644 size=6655
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] scp: Uploading nginx-proxy.conf.j2: perms=C0644 size=587
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] scp: Uploading ansible.cfg: perms=C0644 size=129
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] SCP session complete, closing stdin pipe.
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Waiting for SSH session to complete.
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] scp stderr (length 728): Sink: D0755 0 ansible
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: Sink: D0755 0 playbooks
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: Sink: C0644 4424 haproxy.yml
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: scp: debug1: fd 0 clearing O_NONBLOCK
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: Sink: C0644 18472 database.yml
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: scp: debug1: fd 0 clearing O_NONBLOCK
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: Sink: C0644 3610 backend.yml
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: scp: debug1: fd 0 clearing O_NONBLOCK
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: Sink: C0644 4146 web.yml
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: scp: debug1: fd 0 clearing O_NONBLOCK
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: Sink: E
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: Sink: D0755 0 templates
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: Sink: C0644 4853 backend-api.js.j2
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: scp: debug1: fd 0 clearing O_NONBLOCK
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: Sink: C0644 426 nginx-template.conf.j2
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: scp: debug1: fd 0 clearing O_NONBLOCK
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: Sink: C0644 6655 index.html.j2
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: scp: debug1: fd 0 clearing O_NONBLOCK
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: Sink: C0644 587 nginx-proxy.conf.j2
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: scp: debug1: fd 0 clearing O_NONBLOCK
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: Sink: E
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: Sink: C0644 129 ansible.cfg
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: scp: debug1: fd 0 clearing O_NONBLOCK
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: Sink: E
+2025/11/28 23:48:54 [INFO] (telemetry) ending file
+2025/11/28 23:48:54 [INFO] (telemetry) Starting provisioner ansible-local
+2025/11/28 23:48:54 packer-plugin-ansible_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:48:54 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:48:54 ui: [1;32m==> qemu.debian12-database: Provisioning with Ansible...[0m
+2025/11/28 23:48:54 ui: [1;32m==> qemu.debian12-database: Creating Ansible staging directory...[0m
+2025/11/28 23:48:54 ui: [1;32m==> qemu.debian12-database: Creating directory: /tmp/ansible[0m
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Opening new ssh session
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] starting remote command: mkdir -p '/tmp/ansible'
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:48:54 [INFO] 0 bytes written for 'stdout'
+2025/11/28 23:48:54 [INFO] 0 bytes written for 'stderr'
+2025/11/28 23:48:54 [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:48:54 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:48:54 packer-plugin-ansible_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [INFO] 0 bytes written for 'stdout'
+2025/11/28 23:48:54 packer-plugin-ansible_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [INFO] 0 bytes written for 'stderr'
+2025/11/28 23:48:54 packer-plugin-ansible_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:48:54 ui: [1;32m==> qemu.debian12-database: Uploading main Playbook file...[0m
+2025/11/28 23:48:54 packer-plugin-ansible_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [INFO] 18472 bytes written for 'uploadData'
+2025/11/28 23:48:54 [INFO] 18472 bytes written for 'uploadData'
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Opening new ssh session
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Starting remote scp process:  scp -vt /tmp/ansible
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Started SCP session, beginning transfers...
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Copying input data into temporary file so we can read the length
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] scp: Uploading database.yml: perms=C0644 size=18472
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] SCP session complete, closing stdin pipe.
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Waiting for SSH session to complete.
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] scp stderr (length 70): Sink: C0644 18472 database.yml
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: scp: debug1: fd 0 clearing O_NONBLOCK
+2025/11/28 23:48:54 ui: [1;32m==> qemu.debian12-database: Uploading inventory file...[0m
+2025/11/28 23:48:54 packer-plugin-ansible_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [INFO] 9 bytes written for 'uploadData'
+2025/11/28 23:48:54 [INFO] 9 bytes written for 'uploadData'
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Opening new ssh session
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Starting remote scp process:  scp -vt /tmp/ansible
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Started SCP session, beginning transfers...
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Copying input data into temporary file so we can read the length
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] scp: Uploading packer-provisioner-ansible-local2789401327: perms=C0644 size=9
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] SCP session complete, closing stdin pipe.
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Waiting for SSH session to complete.
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] scp stderr (length 96): Sink: C0644 9 packer-provisioner-ansible-local2789401327
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: scp: debug1: fd 0 clearing O_NONBLOCK
+2025/11/28 23:48:54 ui: [1;32m==> qemu.debian12-database: Executing Ansible: cd /tmp/ansible &&  ANSIBLE_FORCE_COLOR=1 PYTHONUNBUFFERED=1 ansible-playbook /tmp/ansible/database.yml --extra-vars "packer_build_name=debian12-database packer_builder_type=qemu packer_http_addr=10.0.2.2:8618 -o IdentitiesOnly=yes" -e database_version=1.1 -c local -i /tmp/ansible/packer-provisioner-ansible-local2789401327[0m
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] Opening new ssh session
+2025/11/28 23:48:54 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:48:54 [DEBUG] starting remote command: cd /tmp/ansible &&  ANSIBLE_FORCE_COLOR=1 PYTHONUNBUFFERED=1 ansible-playbook /tmp/ansible/database.yml --extra-vars "packer_build_name=debian12-database packer_builder_type=qemu packer_http_addr=10.0.2.2:8618 -o IdentitiesOnly=yes" -e database_version=1.1 -c local -i /tmp/ansible/packer-provisioner-ansible-local2789401327
+2025/11/28 23:48:55 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:48:55 ui: [1;32m==> qemu.debian12-database: PLAY [Configuration du serveur PostgreSQL] *************************************[0m
+2025/11/28 23:48:55 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:48:55 ui: [1;32m==> qemu.debian12-database: TASK [Gathering Facts] *********************************************************[0m
+2025/11/28 23:48:57 ui: [1;32m==> qemu.debian12-database: [0;32mok: [127.0.0.1][0m[0m
+2025/11/28 23:48:57 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:48:57 ui: [1;32m==> qemu.debian12-database: TASK [Nettoyer les fichiers cloud-init] ****************************************[0m
+2025/11/28 23:48:57 ui: [1;32m==> qemu.debian12-database: [0;32mok: [127.0.0.1][0m[0m
+2025/11/28 23:48:57 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:48:57 ui: [1;32m==> qemu.debian12-database: TASK [Nettoyer cloud-init] *****************************************************[0m
+2025/11/28 23:48:59 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1][0m[0m
+2025/11/28 23:48:59 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:48:59 ui: [1;32m==> qemu.debian12-database: TASK [Installer les dépendances] ***********************************************[0m
+2025/11/28 23:49:07 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1][0m[0m
+2025/11/28 23:49:07 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:07 ui: [1;32m==> qemu.debian12-database: TASK [Ajouter la clé GPG PostgreSQL] *******************************************[0m
+2025/11/28 23:49:08 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1][0m[0m
+2025/11/28 23:49:08 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:08 ui: [1;32m==> qemu.debian12-database: TASK [Ajouter le repository PostgreSQL] ****************************************[0m
+2025/11/28 23:49:08 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1][0m[0m
+2025/11/28 23:49:08 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:08 ui: [1;32m==> qemu.debian12-database: TASK [Installer PostgreSQL] ****************************************************[0m
+2025/11/28 23:49:40 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1][0m[0m
+2025/11/28 23:49:40 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:40 ui: [1;32m==> qemu.debian12-database: TASK [Créer le répertoire pour les scripts] ************************************[0m
+2025/11/28 23:49:40 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1][0m[0m
+2025/11/28 23:49:40 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:40 ui: [1;32m==> qemu.debian12-database: TASK [Créer le script de configuration master] *********************************[0m
+2025/11/28 23:49:41 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1][0m[0m
+2025/11/28 23:49:41 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:41 ui: [1;32m==> qemu.debian12-database: TASK [Créer le script de configuration slave] **********************************[0m
+2025/11/28 23:49:42 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1][0m[0m
+2025/11/28 23:49:42 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:42 ui: [1;32m==> qemu.debian12-database: TASK [Créer le script de configuration multi-master node] **********************[0m
+2025/11/28 23:49:42 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1][0m[0m
+2025/11/28 23:49:42 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:42 ui: [1;32m==> qemu.debian12-database: TASK [Créer le script de configuration des souscriptions] **********************[0m
+2025/11/28 23:49:43 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1][0m[0m
+2025/11/28 23:49:43 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:43 ui: [1;32m==> qemu.debian12-database: TASK [Configurer PostgreSQL pour écouter sur toutes les interfaces] ************[0m
+2025/11/28 23:49:43 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1][0m[0m
+2025/11/28 23:49:43 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:43 ui: [1;32m==> qemu.debian12-database: TASK [Configurer pg_hba.conf pour autoriser les connexions] ********************[0m
+2025/11/28 23:49:44 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1][0m[0m
+2025/11/28 23:49:44 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:44 ui: [1;32m==> qemu.debian12-database: TASK [Redémarrer PostgreSQL] ***************************************************[0m
+2025/11/28 23:49:47 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1][0m[0m
+2025/11/28 23:49:47 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:47 ui: [1;32m==> qemu.debian12-database: TASK [Attendre que PostgreSQL soit prêt] ***************************************[0m
+2025/11/28 23:49:53 ui: [1;32m==> qemu.debian12-database: [0;32mok: [127.0.0.1][0m[0m
+2025/11/28 23:49:53 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:53 ui: [1;32m==> qemu.debian12-database: TASK [Créer un script de setup de la base de données] **************************[0m
+2025/11/28 23:49:53 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1][0m[0m
+2025/11/28 23:49:53 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:53 ui: [1;32m==> qemu.debian12-database: TASK [Exécuter le script de setup] *********************************************[0m
+2025/11/28 23:49:54 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1][0m[0m
+2025/11/28 23:49:54 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:54 ui: [1;32m==> qemu.debian12-database: TASK [Créer un script de setup de la table] ************************************[0m
+2025/11/28 23:49:54 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1][0m[0m
+2025/11/28 23:49:54 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:54 ui: [1;32m==> qemu.debian12-database: TASK [Exécuter le script de setup de la table] *********************************[0m
+2025/11/28 23:49:55 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1][0m[0m
+2025/11/28 23:49:55 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:55 ui: [1;32m==> qemu.debian12-database: TASK [Nettoyer les scripts temporaires] ****************************************[0m
+2025/11/28 23:49:55 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1] => (item=/tmp/setup-db.sh)[0m[0m
+2025/11/28 23:49:55 ui: [1;32m==> qemu.debian12-database: [0;33mchanged: [127.0.0.1] => (item=/tmp/setup-table.sh)[0m[0m
+2025/11/28 23:49:56 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:56 ui: [1;32m==> qemu.debian12-database: TASK [S'assurer que PostgreSQL est activé] *************************************[0m
+2025/11/28 23:49:56 ui: [1;32m==> qemu.debian12-database: [0;32mok: [127.0.0.1][0m[0m
+2025/11/28 23:49:56 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:56 ui: [1;32m==> qemu.debian12-database: PLAY RECAP *********************************************************************[0m
+2025/11/28 23:49:56 ui: [1;32m==> qemu.debian12-database: [0;33m127.0.0.1[0m                  : [0;32mok=22  [0m [0;33mchanged=18  [0m unreachable=0    failed=0    skipped=0    rescued=0    ignored=0[0m
+2025/11/28 23:49:56 ui: [1;32m==> qemu.debian12-database:[0m
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:49:56 [INFO] 2910 bytes written for 'stdout'
+2025/11/28 23:49:56 [INFO] 0 bytes written for 'stderr'
+2025/11/28 23:49:56 [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:49:56 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:49:56 packer-plugin-ansible_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [INFO] 2910 bytes written for 'stdout'
+2025/11/28 23:49:56 packer-plugin-ansible_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [INFO] 0 bytes written for 'stderr'
+2025/11/28 23:49:56 packer-plugin-ansible_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:49:56 [INFO] (telemetry) ending ansible-local
+2025/11/28 23:49:56 [INFO] (telemetry) Starting provisioner shell
+2025/11/28 23:49:56 packer-provisioner-shell plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:49:56 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:49:56 ui: [1;32m==> qemu.debian12-database: Provisioning with shell script: /tmp/packer-shell3641684295[0m
+2025/11/28 23:49:56 packer-provisioner-shell plugin: Opening /tmp/packer-shell3641684295 for reading
+2025/11/28 23:49:56 packer-provisioner-shell plugin: [INFO] 38 bytes written for 'uploadData'
+2025/11/28 23:49:56 [INFO] 38 bytes written for 'uploadData'
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [DEBUG] Opening new ssh session
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [DEBUG] Starting remote scp process:  scp -vt /tmp
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [DEBUG] Started SCP session, beginning transfers...
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [DEBUG] Copying input data into temporary file so we can read the length
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [DEBUG] scp: Uploading script_4864.sh: perms=C0644 size=38
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [DEBUG] SCP session complete, closing stdin pipe.
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [DEBUG] Waiting for SSH session to complete.
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [DEBUG] scp stderr (length 69): Sink: C0644 38 script_4864.sh
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: scp: debug1: fd 0 clearing O_NONBLOCK
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [DEBUG] Opening new ssh session
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [DEBUG] starting remote command: chmod 0755 /tmp/script_4864.sh
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:49:56 [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:49:56 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:49:56 packer-provisioner-shell plugin: [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [DEBUG] Opening new ssh session
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [DEBUG] starting remote command: chmod +x /tmp/script_4864.sh; PACKER_BUILDER_TYPE='qemu' PACKER_BUILD_NAME='debian12-database' PACKER_HTTP_ADDR='10.0.2.2:8618' PACKER_HTTP_IP='10.0.2.2' PACKER_HTTP_PORT='8618'  /tmp/script_4864.sh
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:49:56 [INFO] 0 bytes written for 'stdout'
+2025/11/28 23:49:56 [INFO] 0 bytes written for 'stderr'
+2025/11/28 23:49:56 [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:49:56 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:49:56 packer-provisioner-shell plugin: [INFO] 0 bytes written for 'stderr'
+2025/11/28 23:49:56 packer-provisioner-shell plugin: [INFO] 0 bytes written for 'stdout'
+2025/11/28 23:49:56 packer-provisioner-shell plugin: [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [DEBUG] Opening new ssh session
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [DEBUG] starting remote command: rm -f /tmp/script_4864.sh
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:49:56 [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:49:56 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:49:56 packer-provisioner-shell plugin: [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [DEBUG] Opening new ssh session
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [DEBUG] starting remote command: rm -f
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:49:56 [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:49:56 [INFO] RPC endpoint: Communicator ended with: 0
+2025/11/28 23:49:56 packer-provisioner-shell plugin: [INFO] RPC client: Communicator ended with: 0
+2025/11/28 23:49:56 [INFO] (telemetry) ending shell
+2025/11/28 23:49:56 ui: [1;32m==> qemu.debian12-database: Gracefully halting virtual machine...[0m
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 Executing shutdown command: echo 'packer' | sudo -S shutdown -P now
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [DEBUG] Opening new ssh session
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 [DEBUG] starting remote command: echo 'packer' | sudo -S shutdown -P now
+2025/11/28 23:49:56 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:56 Waiting max 5m0s for shutdown to complete
+2025/11/28 23:49:58 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:58 VM shut down.
+2025/11/28 23:49:58 ui: [1;32m==> qemu.debian12-database: Converting hard drive...[0m
+2025/11/28 23:49:58 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:49:58 Executing qemu-img: []string{"convert", "-O", "qcow2", "../vm-images/database-1.1/database-1.1.qcow2", "../vm-images/database-1.1/database-1.1.qcow2.convert"}
+2025/11/28 23:50:06 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:50:06 stdout:
+2025/11/28 23:50:06 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:50:06 stderr:
+2025/11/28 23:50:07 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:50:07 failed to unlock port lockfile: close tcp 127.0.0.1:5981: use of closed network connection
+2025/11/28 23:50:07 packer-plugin-qemu_v1.1.4_x5.0_linux_amd64 plugin: 2025/11/28 23:50:07 failed to unlock port lockfile: close tcp 127.0.0.1:3610: use of closed network connection
+2025/11/28 23:50:07 [INFO] (telemetry) ending qemu.debian12-database
+2025/11/28 23:50:07 ui: [1;32m==> qemu.debian12-database: Running post-processor:  (type manifest)[0m
+2025/11/28 23:50:07 [INFO] (telemetry) Starting post-processor manifest
+2025/11/28 23:50:07 packer-post-processor-manifest plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:50:07 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:50:07 [INFO] (telemetry) ending manifest
+2025/11/28 23:50:07 Flagging to keep original artifact from post-processor 'manifest'
+2025/11/28 23:50:07 ui: [1;32m==> qemu.debian12-database: Running post-processor:  (type shell-local)[0m
+2025/11/28 23:50:07 [INFO] (telemetry) Starting post-processor shell-local
+2025/11/28 23:50:07 packer-post-processor-shell-local plugin: [DEBUG] - common: sending ConfigSpec as protobuf
+2025/11/28 23:50:07 [DEBUG] - common: receiving ConfigSpec as protobuf
+2025/11/28 23:50:07 packer-post-processor-shell-local plugin: [INFO] (shell-local): Prepending inline script with #!/bin/sh -e
+2025/11/28 23:50:07 ui: [1;32m==> qemu.debian12-database (shell-local): Running local shell script: /tmp/packer-shell3239512187[0m
+2025/11/28 23:50:07 packer-post-processor-shell-local plugin: [INFO] (shell-local): starting local command: /bin/sh -c PACKER_BUILDER_TYPE='qemu' PACKER_BUILD_NAME='debian12-database' PACKER_HTTP_ADDR='10.0.2.2:8618' PACKER_HTTP_IP='10.0.2.2' PACKER_HTTP_PORT='8618'  /tmp/packer-shell3239512187
+2025/11/28 23:50:07 packer-post-processor-shell-local plugin: [INFO] (shell-local communicator): Executing local shell command [/bin/sh -c PACKER_BUILDER_TYPE='qemu' PACKER_BUILD_NAME='debian12-database' PACKER_HTTP_ADDR='10.0.2.2:8618' PACKER_HTTP_IP='10.0.2.2' PACKER_HTTP_PORT='8618'  /tmp/packer-shell3239512187]
+2025/11/28 23:50:07 ui: [1;32m==> qemu.debian12-database (shell-local): Image database-1.1.qcow2 créée avec succès[0m
+2025/11/28 23:50:07 ui: [1;32m==> qemu.debian12-database (shell-local): -rw-r--r-- 1 skinoz skinoz 4,5G 28 nov.  23:50 ../vm-images/database-1.1/database-1.1.qcow2[0m
+2025/11/28 23:50:07 ui: [1;32m==> qemu.debian12-database (shell-local): Upload vers OpenStack OVH...[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): +------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): | Field            | Value                                                                                                                                                                                                                                                                 |[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): +------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): | container_format | bare                                                                                                                                                                                                                                                                  |[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): | created_at       | 2025-11-28T22:50:15Z                                                                                                                                                                                                                                                  |[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): | disk_format      | qcow2                                                                                                                                                                                                                                                                 |[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): | file             | /v2/images/f54f5927-f741-4745-9432-dbf5b9d9fa9b/file                                                                                                                                                                                                                  |[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): | id               | f54f5927-f741-4745-9432-dbf5b9d9fa9b                                                                                                                                                                                                                                  |[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): | min_disk         | 0                                                                                                                                                                                                                                                                     |[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): | min_ram          | 0                                                                                                                                                                                                                                                                     |[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): | name             | database-1.1                                                                                                                                                                                                                                                          |[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): | owner            | 8b971a80a94a483ca2d2d301a840f847                                                                                                                                                                                                                                      |[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): | properties       | hw_disk_bus='scsi', hw_scsi_model='virtio-scsi', image_original_user='debian', locations='[]', os_hidden='False', owner_specified.openstack.md5='', owner_specified.openstack.object='images/database-1.1', owner_specified.openstack.sha256='', packer_version='1.1' |[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): | protected        | False                                                                                                                                                                                                                                                                 |[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): | schema           | /v2/schemas/image                                                                                                                                                                                                                                                     |[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): | status           | queued                                                                                                                                                                                                                                                                |[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): | tags             |                                                                                                                                                                                                                                                                       |[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): | updated_at       | 2025-11-28T22:50:15Z                                                                                                                                                                                                                                                  |[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): | visibility       | private                                                                                                                                                                                                                                                               |[0m
+2025/11/28 23:59:39 ui: [1;32m==> qemu.debian12-database (shell-local): +------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+[0m
+2025/11/28 23:59:40 [INFO] (telemetry) ending shell-local
+2025/11/28 23:59:40 ui: [1;32mBuild 'qemu.debian12-database' finished after 19 minutes 6 seconds.[0m
+2025/11/28 23:59:40 ui: 
+==> Wait completed after 19 minutes 6 seconds
+2025/11/28 23:59:40 ui: 
+==> Builds finished. The artifacts of successful builds are:
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact-count []string{"3"}
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact []string{"0", "builder-id", "transcend.qemu"}
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact []string{"0", "id", "VM"}
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact []string{"0", "string", "VM files in directory: ../vm-images/database-1.1"}
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact []string{"0", "files-count", "1"}
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact []string{"0", "file", "0", "../vm-images/database-1.1/database-1.1.qcow2"}
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact []string{"0", "end"}
+2025/11/28 23:59:40 ui: --> qemu.debian12-database: VM files in directory: ../vm-images/database-1.1
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact []string{"1", "builder-id", "transcend.qemu"}
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact []string{"1", "id", "VM"}
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact []string{"1", "string", "VM files in directory: ../vm-images/database-1.1"}
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact []string{"1", "files-count", "1"}
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact []string{"1", "file", "0", "../vm-images/database-1.1/database-1.1.qcow2"}
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact []string{"1", "end"}
+2025/11/28 23:59:40 ui: --> qemu.debian12-database: VM files in directory: ../vm-images/database-1.1
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact []string{"2", "builder-id", "transcend.qemu"}
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact []string{"2", "id", "VM"}
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact []string{"2", "string", "VM files in directory: ../vm-images/database-1.1"}
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact []string{"2", "files-count", "1"}
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact []string{"2", "file", "0", "../vm-images/database-1.1/database-1.1.qcow2"}
+2025/11/28 23:59:40 machine readable: qemu.debian12-database,artifact []string{"2", "end"}
+2025/11/28 23:59:40 ui: --> qemu.debian12-database: VM files in directory: ../vm-images/database-1.1
+2025/11/28 23:59:40 [INFO] (telemetry) Finalizing.
+2025/11/28 23:59:42 [WARN] (telemetry) Error finalizing report. This is safe to ignore. Post "https://checkpoint-api.hashicorp.com/v1/telemetry/packer": context deadline exceeded
+2025/11/28 23:59:42 waiting for all plugin processes to complete...
+2025/11/28 23:59:42 /usr/bin/packer: plugin process exited
+2025/11/28 23:59:42 /usr/bin/packer: plugin process exited
+2025/11/28 23:59:42 /usr/bin/packer: plugin process exited
+2025/11/28 23:59:42 /usr/bin/packer: plugin process exited
+2025/11/28 23:59:42 /home/skinoz/.config/packer/plugins/github.com/hashicorp/ansible/packer-plugin-ansible_v1.1.4_x5.0_linux_amd64: plugin process exited
+2025/11/28 23:59:42 /usr/bin/packer: plugin process exited
+2025/11/28 23:59:42 /usr/bin/packer: plugin process exited
+2025/11/28 23:59:42 /home/skinoz/.config/packer/plugins/github.com/hashicorp/qemu/packer-plugin-qemu_v1.1.4_x5.0_linux_amd64: plugin process exited
+2025/11/28 23:59:42 /usr/bin/packer: plugin process exited

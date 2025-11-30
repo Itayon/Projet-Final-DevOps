@@ -1,0 +1,24 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    
+    root /var/www/html;
+    index index.html;
+    
+    server_name _;
+    charset utf-8;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+    
+    # Proxy vers les backends (sera reconfiguré par le script)
+    location /api/ {
+        return 503 "Backend not configured yet";
+        add_header Content-Type text/plain;
+    }
+    
+    add_header X-Frame-Options "SAMEORIGIN" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-XSS-Protection "1; mode=block" always;
+}

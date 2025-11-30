@@ -1,0 +1,37 @@
+# Credentials OVH
+ovh_application_key    = "your_application_key"
+ovh_application_secret = "your_application_secret"
+ovh_consumer_key       = "your_consumer_key"
+
+# Instances web
+web_instances = ["web1", "web2", "web3"]
+
+# Configuration HAProxy
+haproxy = {
+  enabled           = true
+  flavor            = "b2-7"
+  backend_instances = ["web1", "web2", "web3"]
+}
+
+# Instances backend API
+backend_instances = ["api1", "api2"]
+
+# Configuration des databases
+# Un seul master obligatoire, autant de slaves que souhaité
+database_instances = {
+  db-master = {
+    is_master = true   # Un seul master autorisé
+  }
+  db-slave1 = {
+    is_master = false  # Slave 1
+  }
+  db-slave2 = {
+    is_master = false  # Slave 2 (optionnel)
+  }
+}
+
+# Types d'instances
+backend_flavor  = "b2-7"
+web_flavor      = "b2-7"
+database_flavor = "b2-7"
+network_name    = "Ext-Net"

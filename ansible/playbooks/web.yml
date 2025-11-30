@@ -1,0 +1,145 @@
+---
+- name: Configuration du serveur web Nginx
+  hosts: all
+  become: yes
+  vars:
+    server_version: "{{ server_version | default('1.0') }}"
+  
+  tasks:
+    - name: Nettoyer les fichiers cloud-init
+      file:
+        path: /var/lib/cloud/
+        state: absent
+
+    - name: Nettoyer cloud-init
+      command: cloud-init clean
+      ignore_errors: yes
+
+    - name: Installer Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Supprimer la configuration Nginx par défaut
+      file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+
+    - name: Copier la configuration Nginx avec proxy backend
+      template:
+        src: ../templates/nginx-proxy.conf.j2
+        dest: /etc/nginx/sites-available/default
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Activer le site Nginx
+      file:
+        src: /etc/nginx/sites-available/default
+        dest: /etc/nginx/sites-enabled/default
+        state: link
+
+    - name: Supprimer l'index par défaut
+      file:
+        path: /var/www/html/index.nginx-debian.html
+        state: absent
+
+    - name: Générer la page HTML personnalisée
+      template:
+        src: ../templates/index.html.j2
+        dest: /var/www/html/index.html
+        owner: www-data
+        group: www-data
+        mode: '0644'
+
+    - name: Créer le script de reconfiguration Nginx
+      copy:
+        content: |
+          #!/bin/bash
+          # Script pour reconfigurer Nginx avec les backends du fichier /tmp/backend-ips.txt
+          
+          set -e
+          
+          BACKENDS_FILE="/tmp/backend-ips.txt"
+          
+          if [ ! -f "$BACKENDS_FILE" ]; then
+              echo "Pas de backends configurés"
+              exit 0
+          fi
+          
+          # Lire les IPs backend
+          UPSTREAM_SERVERS=""
+          while IFS= read -r IP; do
+              if [ -n "$IP" ]; then
+                  UPSTREAM_SERVERS="${UPSTREAM_SERVERS}    server ${IP}:3000;\n"
+              fi
+          done < "$BACKENDS_FILE"
+          
+          if [ -z "$UPSTREAM_SERVERS" ]; then
+              echo "Aucun backend trouvé"
+              exit 0
+          fi
+          
+          # Créer la configuration Nginx avec upstream
+          cat > /etc/nginx/sites-available/default << 'EOFCFG'
+          upstream backend_api {
+          EOFCFG
+          
+          echo -e "$UPSTREAM_SERVERS" >> /etc/nginx/sites-available/default
+          
+          cat >> /etc/nginx/sites-available/default << 'EOFCFG'
+          }
+
+          server {
+              listen 80 default_server;
+              listen [::]:80 default_server;
+              
+              root /var/www/html;
+              index index.html;
+              
+              server_name _;
+              charset utf-8;
+
+              location / {
+                  try_files $uri $uri/ =404;
+              }
+              
+              location /api/ {
+                  proxy_pass http://backend_api;
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                  proxy_set_header X-Forwarded-Proto $scheme;
+              }
+              
+              add_header X-Frame-Options "SAMEORIGIN" always;
+              add_header X-Content-Type-Options "nosniff" always;
+              add_header X-XSS-Protection "1; mode=block" always;
+          }
+          EOFCFG
+          
+          # Vérifier la configuration
+          if nginx -t; then
+              echo "Configuration Nginx valide"
+              systemctl reload nginx
+              echo "Nginx reconfiguré avec succès"
+          else
+              echo "Erreur: Configuration Nginx invalide"
+              exit 1
+          fi
+        dest: /usr/local/bin/reconfigure-nginx.sh
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Vérifier la configuration Nginx
+      command: nginx -t
+      register: nginx_test
+      changed_when: false
+
+    - name: Redémarrer Nginx
+      systemd:
+        name: nginx
+        state: restarted
+        enabled: yes

@@ -1,0 +1,147 @@
+---
+- name: Configuration du Load Balancer HAProxy
+  hosts: all
+  become: yes
+  vars:
+    haproxy_version: "{{ haproxy_version | default('1.0') }}"
+  
+  tasks:
+    - name: Nettoyer les fichiers cloud-init
+      file:
+        path: /var/lib/cloud/
+        state: absent
+
+    - name: Nettoyer cloud-init
+      command: cloud-init clean
+      ignore_errors: yes
+
+    - name: Installer HAProxy
+      apt:
+        name: haproxy
+        state: present
+        update_cache: yes
+
+    - name: Créer une configuration HAProxy minimale
+      copy:
+        content: |
+          global
+              log /dev/log local0
+              log /dev/log local1 notice
+              chroot /var/lib/haproxy
+              stats socket /run/haproxy/admin.sock mode 660 level admin
+              stats timeout 30s
+              user haproxy
+              group haproxy
+              daemon
+
+          defaults
+              log     global
+              mode    http
+              option  httplog
+              option  dontlognull
+              timeout connect 5000
+              timeout client  50000
+              timeout server  50000
+
+          frontend http_front
+              bind *:80
+              default_backend http_back
+
+          backend http_back
+              balance roundrobin
+              option httpchk GET /
+              # Backends will be added by Terraform
+        dest: /etc/haproxy/haproxy.cfg
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Créer le script de reconfiguration HAProxy
+      copy:
+        content: |
+          #!/bin/bash
+          # Script pour reconfigurer HAProxy avec les backends du fichier /tmp/haproxy-backends.txt
+          
+          set -e
+          
+          BACKENDS_FILE="/tmp/haproxy-backends.txt"
+          
+          if [ ! -f "$BACKENDS_FILE" ]; then
+              echo "Erreur: Fichier $BACKENDS_FILE introuvable"
+              exit 1
+          fi
+          
+          # Lire les IPs backend depuis le fichier
+          BACKENDS=""
+          INDEX=1
+          while IFS= read -r IP; do
+              if [ -n "$IP" ]; then
+                  BACKENDS="${BACKENDS}    server web${INDEX} ${IP}:80 check\n"
+                  INDEX=$((INDEX + 1))
+              fi
+          done < "$BACKENDS_FILE"
+          
+          if [ -z "$BACKENDS" ]; then
+              echo "Aucun backend trouvé dans $BACKENDS_FILE"
+              exit 1
+          fi
+          
+          # Créer la configuration HAProxy
+          cat > /etc/haproxy/haproxy.cfg << 'EOFCFG'
+          global
+              log /dev/log local0
+              log /dev/log local1 notice
+              chroot /var/lib/haproxy
+              stats socket /run/haproxy/admin.sock mode 660 level admin
+              stats timeout 30s
+              user haproxy
+              group haproxy
+              daemon
+          
+          defaults
+              log     global
+              mode    http
+              option  httplog
+              option  dontlognull
+              timeout connect 5000
+              timeout client  50000
+              timeout server  50000
+              errorfile 400 /etc/haproxy/errors/400.http
+              errorfile 403 /etc/haproxy/errors/403.http
+              errorfile 408 /etc/haproxy/errors/408.http
+              errorfile 500 /etc/haproxy/errors/500.http
+              errorfile 502 /etc/haproxy/errors/502.http
+              errorfile 503 /etc/haproxy/errors/503.http
+              errorfile 504 /etc/haproxy/errors/504.http
+          
+          frontend http_front
+              bind *:80
+              default_backend http_back
+          
+          backend http_back
+              balance roundrobin
+              option httpchk GET /
+          EOFCFG
+          
+          # Ajouter les backends
+          echo -e "$BACKENDS" >> /etc/haproxy/haproxy.cfg
+          
+          # Vérifier la configuration
+          if haproxy -c -f /etc/haproxy/haproxy.cfg; then
+              echo "Configuration HAProxy valide"
+              systemctl restart haproxy
+              echo "HAProxy reconfiguré avec succès avec $(($INDEX - 1)) backends"
+          else
+              echo "Erreur: Configuration HAProxy invalide"
+              exit 1
+          fi
+        dest: /usr/local/bin/reconfigure-haproxy.sh
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Activer HAProxy
+      systemd:
+        name: haproxy
+        enabled: yes
+        state: started
